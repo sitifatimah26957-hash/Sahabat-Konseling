@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SAHABAT KONSELING</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dekorasi dekorasi-1"></div>
+    <div class="dekorasi dekorasi-2"></div>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <p class="welcome">SELAMAT DATANG 👋</p>
+
+                <h1>SAHABAT KONSELING</h1>
+
+                <h2>Teman Digital untuk Memahami Dirimu</h2>
+
+                <p class="hero-text">
+                    Kenali dirimu, pahami perasaanmu, dan temukan ruang untuk bercerita.
+                </p>
+
+            </div>
+
+            <div class="hero-image">
+                <img src="gambar/pg konseling.jpeg" alt="Ilustrasi konseling">
+            </div>
+
+        </div>
+
+
+        <!-- LAYANAN -->
+        <div class="section-title">
+
+            <span class="section-line"></span>
+
+            <div>
+
+                <h3>Layanan Sahabat Konseling 💙</h3>
+
+                <p class="layanan-text">
+                    Pilih layanan yang sesuai dengan kebutuhanmu.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="layanan-menu">
+
+            <button onclick="cekKondisi()">🌤️ Cek Kondisi Diri</button>
+
+            <button onclick="pahamiPerasaan()">💭 Pahami Perasaanmu</button>
+
+            <button onclick="layananKonseling()">🤝 Layanan Konseling</button>
+
+            <button onclick="petaMasalah()">🧩 Peta Masalah</button>
+
+            <button onclick="ruangCerita()">💬 Ruang Cerita</button>
+
+            <button onclick="skalaPerasaan()">📊 Skala Perasaan</button>
+
+            <button onclick="rekomendasiLayanan()">💡 Rekomendasi Layanan</button>
+
+            <button onclick="catatanKonseling()">📝 Catatan Konseling</button>
+
+        </div>
+
+
+        <div id="hasil"></div>
+
+
+        <!-- ANGKET -->
+        <section class="angket-section">
+
+            <h2>Angket Kondisi Siswa</h2>
+
+            <p>
+                Isi angket berikut untuk membantu mengenali kondisi dan
+                kebutuhanmu sebagai bahan pemetaan awal layanan BK.
+            </p>
+
+
+            <div class="form-group">
+
+                <label for="namaAngket">Nama/Inisial</label>
+
+                <input
+                    type="text"
+                    id="namaAngket"
+                    placeholder="Contoh: Siti / SF"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="kelasAngket">Kelas</label>
+
+                <input
+                    type="text"
+                    id="kelasAngket"
+                    placeholder="Contoh: XI IPA 1"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="kondisiAngket">
+                    1. Bagaimana kondisi kamu saat ini?
+                </label>
+
+                <select id="kondisiAngket">
+
+                    <option value="">
+                        -- Pilih kondisi --
+                    </option>
+
+                    <option value="Senang dan bersemangat">
+                        Senang dan bersemangat
+                    </option>
+
+                    <option value="Biasa saja / cukup stabil">
+                        Biasa saja / cukup stabil
+                    </option>
+
+                    <option value="Sedih / kurang semangat">
+                        Sedih / kurang semangat
+                    </option>
+
+                    <option value="Cemas / khawatir">
+                        Cemas / khawatir
+                    </option>
+
+                    <option value="Bingung">
+                        Bingung
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="perasaanAngket">
+                    2. Perasaan apa yang paling kamu rasakan?
+                </label>
+
+                <select id="perasaanAngket">
+
+                    <option value="">
+                        -- Pilih perasaan --
+                    </option>
+
+                    <option value="Senang">Senang</option>
+                    <option value="Sedih">Sedih</option>
+                    <option value="Cemas">Cemas</option>
+                    <option value="Marah">Marah</option>
+                    <option value="Bingung">Bingung</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="bidangAngket">
+                    3. Bidang apa yang paling membutuhkan perhatian?
+                </label>
+
+                <select id="bidangAngket">
+
+                    <option value="">
+                        -- Pilih bidang --
+                    </option>
+
+                    <option value="Pribadi">Pribadi</option>
+
+                    <option value="Sosial / Pertemanan">
+                        Sosial / Pertemanan
+                    </option>
+
+                    <option value="Belajar">Belajar</option>
+
+                    <option value="Karier">Karier</option>
+
+                    <option value="Keluarga">Keluarga</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="skalaAngket">
+                    4. Seberapa nyaman kondisi perasaanmu saat ini? (1–10)
+                </label>
+
+                <select id="skalaAngket">
+
+                    <option value="">
+                        -- Pilih skala --
+                    </option>
+
+                    <option value="1">1 - Sangat tidak nyaman</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5 - Cukup nyaman</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10 - Sangat nyaman</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="catatanAngket">
+                    5. Ada hal yang ingin kamu ceritakan?
+                </label>
+
+                <textarea
+                    id="catatanAngket"
+                    rows="5"
+                    placeholder="Tuliskan secara singkat jika ada hal yang ingin kamu sampaikan..."
+                ></textarea>
+
+            </div>
+
+
+            <p class="privasi-angket">
+                Catatan privasi: jangan menuliskan alamat rumah,
+                nomor telepon, kata sandi, atau informasi pribadi
+                yang sangat sensitif.
+            </p>
+
+
+            <button type="button" onclick="kirimAngket()">
+                KIRIM ANGKET
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
