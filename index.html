@@ -5,98 +5,763 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SAHABAT KONSELING</title>
+    <title>Sahabat Konseling</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- DEKORASI -->
     <div class="dekorasi dekorasi-1"></div>
     <div class="dekorasi dekorasi-2"></div>
 
-    <div class="container">
 
-        <!-- HERO -->
-        <div class="hero">
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            <span>💙</span>
+
+            <div>
+                <strong>SAHABAT</strong>
+                <small>KONSELING</small>
+            </div>
+        </div>
+
+
+        <nav>
+            <a href="#beranda">Beranda</a>
+            <a href="#kenali">Kenali Diri</a>
+            <a href="#layanan">Layanan</a>
+            <a href="#tentang">Tentang</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <!-- =========================
+             HERO
+        ========================== -->
+
+        <section class="hero" id="beranda">
 
             <div class="hero-content">
 
-                <p class="welcome">SELAMAT DATANG 👋</p>
+                <span class="hero-label">
+                    🌱 RUANG UNTUK MEMAHAMI DIRI
+                </span>
 
-                <h1>SAHABAT KONSELING</h1>
 
-                <h2>Teman Digital untuk Memahami Dirimu</h2>
+                <h1>
+                    Kenali Dirimu,<br>
+                    <span>Pahami Perasaanmu.</span>
+                </h1>
 
-                <p class="hero-text">
-                    Kenali dirimu, pahami perasaanmu, dan temukan ruang untuk bercerita.
+
+                <p>
+                    Sahabat Konseling hadir sebagai ruang digital
+                    untuk membantu kamu mengenali kondisi diri,
+                    memahami perasaan, dan menemukan layanan
+                    konseling yang sesuai dengan kebutuhanmu.
                 </p>
 
+
+                <div class="hero-buttons">
+
+                    <a href="#kenali" class="btn-primary">
+                        🧠 Mulai Kenali Dirimu
+                    </a>
+
+                    <a href="#layanan" class="btn-secondary">
+                        Lihat Layanan
+                    </a>
+
+                </div>
+
             </div>
+
 
             <div class="hero-image">
-                <img src="gambar/pg konseling.jpeg" alt="Ilustrasi konseling">
+
+                <div class="image-circle"></div>
+
+                <img
+                    src="gambar/pg konseling.jpeg"
+                    alt="Ilustrasi layanan konseling"
+                >
+
+
+                <div class="floating-card card-one">
+                    💙 Ruang Aman
+                </div>
+
+
+                <div class="floating-card card-two">
+                    🌱 Kenali Dirimu
+                </div>
+
             </div>
 
-        </div>
+        </section>
 
 
-        <!-- LAYANAN -->
-        <div class="section-title">
 
-            <span class="section-line"></span>
+        <!-- =========================
+             INFO SINGKAT
+        ========================== -->
 
-            <div>
+        <section class="intro-section">
 
-                <h3>Layanan Sahabat Konseling 💙</h3>
 
-                <p class="layanan-text">
-                    Pilih layanan yang sesuai dengan kebutuhanmu.
+            <div class="intro-card">
+
+                <div class="intro-icon">
+                    🧠
+                </div>
+
+                <h3>
+                    Kenali
+                </h3>
+
+                <p>
+                    Kenali kondisi, kebutuhan, dan hal-hal
+                    yang sedang kamu rasakan.
                 </p>
 
             </div>
 
-        </div>
 
 
-        <div class="layanan-menu">
+            <div class="intro-card">
 
-            <button onclick="cekKondisi()">🌤️ Cek Kondisi Diri</button>
+                <div class="intro-icon">
+                    💭
+                </div>
 
-            <button onclick="pahamiPerasaan()">💭 Pahami Perasaanmu</button>
+                <h3>
+                    Pahami
+                </h3>
 
-            <button onclick="layananKonseling()">🤝 Layanan Konseling</button>
+                <p>
+                    Pahami perasaan dan masalah yang sedang
+                    kamu hadapi dengan lebih baik.
+                </p>
 
-            <button onclick="petaMasalah()">🧩 Peta Masalah</button>
+            </div>
 
-            <button onclick="ruangCerita()">💬 Ruang Cerita</button>
 
-            <button onclick="skalaPerasaan()">📊 Skala Perasaan</button>
 
-            <button onclick="rekomendasiLayanan()">💡 Rekomendasi Layanan</button>
+            <div class="intro-card">
 
-            <button onclick="catatanKonseling()">📝 Catatan Konseling</button>
+                <div class="intro-icon">
+                    🤝
+                </div>
 
-        </div>
+                <h3>
+                    Dapatkan Dukungan
+                </h3>
 
+                <p>
+                    Temukan informasi dan layanan BK yang
+                    sesuai dengan kebutuhanmu.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             KENALI DIRI
+        ========================== -->
+
+        <section class="section" id="kenali">
+
+
+            <div class="section-heading">
+
+                <span>
+                    01 — KENALI DIRI
+                </span>
+
+                <h2>
+                    Kamu sedang merasakan apa?
+                </h2>
+
+                <p>
+                    Tidak apa-apa kalau kamu belum tahu harus mulai dari mana.
+                    Mulailah dengan mengenali kondisi dirimu terlebih dahulu.
+                </p>
+
+            </div>
+
+
+
+            <div class="condition-grid">
+
+
+                <button
+                    onclick="cekKondisi()"
+                    class="condition-card"
+                >
+
+                    <div class="condition-icon">
+                        🌤️
+                    </div>
+
+                    <h3>
+                        Cek Kondisi Diri
+                    </h3>
+
+                    <p>
+                        Kenali gambaran kondisi dirimu saat ini.
+                    </p>
+
+                    <span>
+                        Mulai →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="pahamiPerasaan()"
+                    class="condition-card"
+                >
+
+                    <div class="condition-icon">
+                        💭
+                    </div>
+
+                    <h3>
+                        Pahami Perasaan
+                    </h3>
+
+                    <p>
+                        Kenali perasaan yang sedang kamu alami.
+                    </p>
+
+                    <span>
+                        Mulai →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="skalaPerasaan()"
+                    class="condition-card"
+                >
+
+                    <div class="condition-icon">
+                        📊
+                    </div>
+
+                    <h3>
+                        Skala Perasaan
+                    </h3>
+
+                    <p>
+                        Lihat seberapa nyaman kondisi perasaanmu.
+                    </p>
+
+                    <span>
+                        Mulai →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- HASIL JAVASCRIPT -->
 
         <div id="hasil"></div>
 
 
-        <!-- ANGKET -->
-        <section class="angket-section">
 
-            <h2>Angket Kondisi Siswa</h2>
+        <!-- =========================
+             TEMUKAN ARAH
+        ========================== -->
 
-            <p>
-                Isi angket berikut untuk membantu mengenali kondisi dan
-                kebutuhanmu sebagai bahan pemetaan awal layanan BK.
-            </p>
+        <section
+            class="section problem-section"
+            id="temukan-arah"
+        >
 
+
+            <div class="section-heading">
+
+                <span>
+                    02 — TEMUKAN ARAH
+                </span>
+
+                <h2>
+                    Apa yang sedang kamu hadapi?
+                </h2>
+
+                <p>
+                    Pilih bidang yang paling sesuai dengan kondisi
+                    yang sedang kamu alami untuk melihat pertanyaan
+                    pemetaan yang lebih spesifik.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-grid">
+
+
+                <!-- BELAJAR -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Belajar')"
+                >
+
+                    <div>
+                        📚
+                    </div>
+
+                    <h3>
+                        Belajar
+                    </h3>
+
+                    <p>
+                        Motivasi, konsentrasi, tugas, dan kesulitan belajar.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+
+
+                <!-- PRIBADI -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Pribadi')"
+                >
+
+                    <div>
+                        💙
+                    </div>
+
+                    <h3>
+                        Pribadi
+                    </h3>
+
+                    <p>
+                        Perasaan, kepercayaan diri, dan pengelolaan diri.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+
+
+                <!-- SOSIAL -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Sosial')"
+                >
+
+                    <div>
+                        👥
+                    </div>
+
+                    <h3>
+                        Sosial
+                    </h3>
+
+                    <p>
+                        Pertemanan, komunikasi, dan hubungan dengan lingkungan.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+
+
+                <!-- KELUARGA -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Keluarga')"
+                >
+
+                    <div>
+                        🏠
+                    </div>
+
+                    <h3>
+                        Keluarga
+                    </h3>
+
+                    <p>
+                        Hubungan dan situasi yang berkaitan dengan keluarga.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+
+
+                <!-- KARIER -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Karier')"
+                >
+
+                    <div>
+                        🎯
+                    </div>
+
+                    <h3>
+                        Karier
+                    </h3>
+
+                    <p>
+                        Minat, pilihan pendidikan, dan rencana masa depan.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+
+
+                <!-- PENGEMBANGAN DIRI -->
+
+                <button
+                    type="button"
+                    class="problem-card"
+                    onclick="bukaBidang('Pengembangan Diri')"
+                >
+
+                    <div>
+                        🌱
+                    </div>
+
+                    <h3>
+                        Pengembangan Diri
+                    </h3>
+
+                    <p>
+                        Mengenali potensi dan meningkatkan kemampuan diri.
+                    </p>
+
+                    <span>
+                        Pilih →
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- TEMPAT PERTANYAAN AKAN MUNCUL -->
+
+            <div
+                id="pertanyaanBidang"
+                class="pertanyaan-bidang"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LAYANAN
+        ========================== -->
+
+        <section
+            class="section"
+            id="layanan"
+        >
+
+
+            <div class="section-heading">
+
+                <span>
+                    03 — LAYANAN SAHABAT KONSELING
+                </span>
+
+                <h2>
+                    Temukan layanan yang kamu butuhkan
+                </h2>
+
+                <p>
+                    Pilih layanan yang sesuai dengan kondisi dan kebutuhanmu.
+                </p>
+
+            </div>
+
+
+
+            <div class="service-grid">
+
+
+                <button
+                    onclick="petaMasalah()"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        🧩
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Peta Masalah
+                        </h3>
+
+                        <p>
+                            Membantu mengenali bidang masalah yang sedang dihadapi.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="ruangCerita()"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        💬
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Ruang Cerita
+                        </h3>
+
+                        <p>
+                            Ruang untuk menuliskan hal yang ingin kamu ceritakan.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="rekomendasiLayanan()"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        💡
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Rekomendasi Layanan
+                        </h3>
+
+                        <p>
+                            Dapatkan gambaran layanan BK yang sesuai.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="layananKonseling()"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        🤝
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Layanan Konseling
+                        </h3>
+
+                        <p>
+                            Kenali pilihan layanan konseling yang tersedia.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+
+                <button
+                    onclick="catatanKonseling()"
+                    class="service-card"
+                >
+
+                    <div class="service-icon">
+                        📝
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Catatan Konseling
+                        </h3>
+
+                        <p>
+                            Catat hal penting yang ingin kamu ingat.
+                        </p>
+
+                    </div>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             PEMETAAN
+        ========================== -->
+
+        <section class="assessment-section">
+
+
+            <div class="assessment-content">
+
+                <span class="small-label">
+                    ✨ PEMETAAN DIRI
+                </span>
+
+                <h2>
+                    Ingin mengenali kondisi<br>
+                    dirimu lebih jauh?
+                </h2>
+
+                <p>
+                    Isi pemetaan kondisi siswa untuk membantu
+                    mengenali perasaan, kebutuhan, dan bidang
+                    yang mungkin membutuhkan perhatian.
+                </p>
+
+                <button
+                    type="button"
+                    class="assessment-button"
+                    onclick="bukaAngket()"
+                >
+                    Mulai Pemetaan Diri →
+                </button>
+
+            </div>
+
+
+            <div class="assessment-decoration">
+                🧠
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FORM ANGKET
+        ========================== -->
+
+        <section
+            class="angket-section"
+            id="formAngket"
+        >
+
+
+            <div class="form-heading">
+
+                <span>
+                    PEMETAAN KONDISI SISWA
+                </span>
+
+                <h2>
+                    Kenali Kondisi Dirimu
+                </h2>
+
+                <p>
+                    Jawablah pertanyaan sesuai dengan kondisi yang
+                    sedang kamu alami. Tidak ada jawaban benar atau salah.
+                </p>
+
+            </div>
+
+
+
+            <!-- IDENTITAS -->
 
             <div class="form-group">
 
-                <label for="namaAngket">Nama/Inisial</label>
+                <label for="namaAngket">
+                    Nama / Inisial *
+                </label>
 
                 <input
                     type="text"
@@ -107,9 +772,12 @@
             </div>
 
 
+
             <div class="form-group">
 
-                <label for="kelasAngket">Kelas</label>
+                <label for="kelasAngket">
+                    Kelas *
+                </label>
 
                 <input
                     type="text"
@@ -120,36 +788,62 @@
             </div>
 
 
+
+            <!-- KONTAK -->
+
+            <div class="form-group">
+
+                <label for="kontakAngket">
+                    Gmail / Nomor HP *
+                </label>
+
+                <p class="form-help">
+                    Masukkan Gmail atau nomor HP yang aktif agar konselor
+                    dapat menghubungi kamu jika diperlukan untuk tindak lanjut.
+                </p>
+
+                <input
+                    type="text"
+                    id="kontakAngket"
+                    placeholder="Contoh: nama@gmail.com / 081234567890"
+                >
+
+            </div>
+
+
+
+            <!-- KONDISI UMUM -->
+
             <div class="form-group">
 
                 <label for="kondisiAngket">
-                    1. Bagaimana kondisi kamu saat ini?
+                    1. Bagaimana keadaanmu secara umum saat ini? *
                 </label>
 
                 <select id="kondisiAngket">
 
                     <option value="">
-                        -- Pilih kondisi --
+                        -- Pilih keadaan --
                     </option>
 
-                    <option value="Senang dan bersemangat">
-                        Senang dan bersemangat
+                    <option value="Merasa baik dan bersemangat">
+                        Merasa baik dan bersemangat
                     </option>
 
-                    <option value="Biasa saja / cukup stabil">
-                        Biasa saja / cukup stabil
+                    <option value="Cukup baik tetapi ada beberapa hal yang dipikirkan">
+                        Cukup baik tetapi ada beberapa hal yang dipikirkan
                     </option>
 
-                    <option value="Sedih / kurang semangat">
-                        Sedih / kurang semangat
+                    <option value="Sedang mengalami kesulitan">
+                        Sedang mengalami kesulitan
                     </option>
 
-                    <option value="Cemas / khawatir">
-                        Cemas / khawatir
+                    <option value="Sedang merasa tertekan">
+                        Sedang merasa tertekan
                     </option>
 
-                    <option value="Bingung">
-                        Bingung
+                    <option value="Merasa bingung dengan keadaan yang dihadapi">
+                        Merasa bingung dengan keadaan yang dihadapi
                     </option>
 
                 </select>
@@ -157,10 +851,13 @@
             </div>
 
 
+
+            <!-- PERASAAN -->
+
             <div class="form-group">
 
                 <label for="perasaanAngket">
-                    2. Perasaan apa yang paling kamu rasakan?
+                    2. Perasaan apa yang paling kamu rasakan saat ini? *
                 </label>
 
                 <select id="perasaanAngket">
@@ -169,50 +866,63 @@
                         -- Pilih perasaan --
                     </option>
 
-                    <option value="Senang">Senang</option>
-                    <option value="Sedih">Sedih</option>
-                    <option value="Cemas">Cemas</option>
-                    <option value="Marah">Marah</option>
-                    <option value="Bingung">Bingung</option>
+                    <option value="Senang">
+                        😊 Senang
+                    </option>
+
+                    <option value="Sedih">
+                        💙 Sedih
+                    </option>
+
+                    <option value="Cemas atau khawatir">
+                        😟 Cemas atau khawatir
+                    </option>
+
+                    <option value="Marah atau kesal">
+                        😤 Marah atau kesal
+                    </option>
+
+                    <option value="Bingung">
+                        🧩 Bingung
+                    </option>
+
+                    <option value="Takut">
+                        😟 Takut
+                    </option>
+
+                    <option value="Kecewa">
+                        💭 Kecewa
+                    </option>
+
+                    <option value="Biasa saja">
+                        🌱 Biasa saja
+                    </option>
 
                 </select>
 
             </div>
 
 
-            <div class="form-group">
 
-                <label for="bidangAngket">
-                    3. Bidang apa yang paling membutuhkan perhatian?
-                </label>
+            <!-- PERTANYAAN BIDANG -->
+            <!--
+                BAGIAN INI AKAN DIISI OTOMATIS
+                OLEH JAVASCRIPT SAAT USER MEMILIH
+                SALAH SATU DARI 6 KOTAK DI ATAS.
+            -->
 
-                <select id="bidangAngket">
+            <div
+                id="pertanyaanBidangAngket"
+            ></div>
 
-                    <option value="">
-                        -- Pilih bidang --
-                    </option>
 
-                    <option value="Pribadi">Pribadi</option>
 
-                    <option value="Sosial / Pertemanan">
-                        Sosial / Pertemanan
-                    </option>
-
-                    <option value="Belajar">Belajar</option>
-
-                    <option value="Karier">Karier</option>
-
-                    <option value="Keluarga">Keluarga</option>
-
-                </select>
-
-            </div>
-
+            <!-- SKALA PERASAAN -->
 
             <div class="form-group">
 
                 <label for="skalaAngket">
-                    4. Seberapa nyaman kondisi perasaanmu saat ini? (1–10)
+                    9. Seberapa nyaman kondisi perasaanmu saat ini? *
                 </label>
 
                 <select id="skalaAngket">
@@ -221,52 +931,165 @@
                         -- Pilih skala --
                     </option>
 
-                    <option value="1">1 - Sangat tidak nyaman</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5 - Cukup nyaman</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10 - Sangat nyaman</option>
+                    <option value="1">
+                        1 - Sangat tidak nyaman
+                    </option>
+
+                    <option value="2">
+                        2
+                    </option>
+
+                    <option value="3">
+                        3
+                    </option>
+
+                    <option value="4">
+                        4
+                    </option>
+
+                    <option value="5">
+                        5 - Cukup nyaman
+                    </option>
+
+                    <option value="6">
+                        6
+                    </option>
+
+                    <option value="7">
+                        7
+                    </option>
+
+                    <option value="8">
+                        8
+                    </option>
+
+                    <option value="9">
+                        9
+                    </option>
+
+                    <option value="10">
+                        10 - Sangat nyaman
+                    </option>
 
                 </select>
 
             </div>
 
 
+
+            <!-- CERITA TAMBAHAN -->
+
             <div class="form-group">
 
                 <label for="catatanAngket">
-                    5. Ada hal yang ingin kamu ceritakan?
+
+                    10. Ada hal lain yang ingin kamu ceritakan?
+
+                    <span style="font-weight:normal;">
+                        (opsional)
+                    </span>
+
                 </label>
+
 
                 <textarea
                     id="catatanAngket"
                     rows="5"
-                    placeholder="Tuliskan secara singkat jika ada hal yang ingin kamu sampaikan..."
+                    placeholder="Tuliskan jika ada hal lain yang ingin kamu sampaikan..."
                 ></textarea>
 
             </div>
 
 
+
+            <!-- PRIVASI -->
+
             <p class="privasi-angket">
-                Catatan privasi: jangan menuliskan alamat rumah,
-                nomor telepon, kata sandi, atau informasi pribadi
+
+                🔒 Data yang kamu berikan digunakan untuk membantu
+                pemetaan awal dan tindak lanjut layanan BK.
+                Jangan menuliskan kata sandi atau informasi pribadi
                 yang sangat sensitif.
+
             </p>
 
 
-            <button type="button" onclick="kirimAngket()">
-                KIRIM ANGKET
+
+            <button
+                type="button"
+                class="submit-angket"
+                onclick="kirimAngket()"
+            >
+                Kirim Pemetaan →
             </button>
 
         </section>
 
-    </div>
 
+
+        <!-- =========================
+             TENTANG
+        ========================== -->
+
+        <section
+            class="about-section"
+            id="tentang"
+        >
+
+            <div class="about-icon">
+                💙
+            </div>
+
+
+            <div>
+
+                <span class="small-label">
+                    TENTANG SAHABAT KONSELING
+                </span>
+
+                <h2>
+                    Tidak harus menghadapi semuanya sendiri.
+                </h2>
+
+                <p>
+                    Sahabat Konseling merupakan media digital
+                    layanan Bimbingan dan Konseling yang dirancang
+                    untuk membantu siswa mengenali kondisi dirinya,
+                    memahami perasaan, serta memperoleh informasi
+                    mengenai layanan BK.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             FOOTER
+        ========================== -->
+
+        <footer>
+
+            <div class="footer-logo">
+                💙 <strong>SAHABAT KONSELING</strong>
+            </div>
+
+            <p>
+                Teman Digital untuk Memahami Dirimu
+            </p>
+
+            <span>
+                Media Layanan Bimbingan dan Konseling
+            </span>
+
+        </footer>
+
+    </main>
+
+
+
+    <!-- JAVASCRIPT -->
 
     <script src="./script.js"></script>
 

@@ -1,110 +1,120 @@
-function cekKondisi() {
-    let kondisi = prompt(
-        "CEK KONDISI DIRI\n\n" +
-        "Layanan ini membantu kamu mengenali kondisi dirimu " +
-        "sebagai langkah awal dalam memahami kebutuhan pribadi.\n\n" +
-        "Bagaimana kondisi yang paling menggambarkan dirimu saat ini?\n\n" +
-        "1. Senang dan bersemangat\n" +
-        "2. Biasa saja / cukup stabil\n" +
-        "3. Sedih atau kehilangan semangat\n" +
-        "4. Cemas atau khawatir\n" +
-        "5. Bingung atau sulit menentukan arah"
-    );
+/* =========================================
+   SAHABAT KONSELING
+   SCRIPT UTAMA
+========================================= */
 
-    if (kondisi == "1") {
-        alert(
-            "HASIL REFLEKSI DIRI\n\n" +
-            "Kamu sedang berada dalam kondisi yang cukup positif.\n\n" +
-            "Dalam BK, mengenali dan mempertahankan kondisi positif " +
-            "merupakan bagian dari upaya pengembangan diri. " +
-            "Coba kenali hal-hal yang membuatmu merasa bersemangat " +
-            "dan gunakan energi positif tersebut untuk melakukan " +
-            "kegiatan yang bermanfaat.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa hal yang membuatmu merasa senang hari ini?"
-        );
-    }
 
-    else if (kondisi == "2") {
-        alert(
-            "HASIL REFLEKSI DIRI\n\n" +
-            "Kondisimu saat ini cukup stabil.\n\n" +
-            "Kondisi yang biasa saja bukan berarti tidak penting. " +
-            "Justru kamu dapat menggunakan waktu ini untuk lebih " +
-            "mengenali dirimu, kebutuhanmu, serta hal-hal yang ingin " +
-            "kamu kembangkan.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa satu hal dalam dirimu yang ingin kamu kembangkan?"
-        );
-    }
+/* =========================================
+   VARIABEL BIDANG YANG DIPILIH
+========================================= */
 
-    else if (kondisi == "3") {
-        alert(
-            "HASIL REFLEKSI DIRI\n\n" +
-            "Kamu sedang merasakan kesedihan atau berkurangnya semangat.\n\n" +
-            "Dalam proses BK, perasaan tersebut dapat menjadi bagian " +
-            "dari proses memahami diri. Kamu tidak perlu langsung " +
-            "memaksa dirimu untuk terlihat baik-baik saja. Cobalah " +
-            "mengenali apa yang menjadi pemicu perasaan tersebut dan " +
-            "hal apa yang sebenarnya kamu butuhkan.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa yang paling memengaruhi perasaanmu akhir-akhir ini?\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Kamu dapat menggunakan fitur Ruang Cerita untuk menuliskan " +
-            "hal yang sedang kamu rasakan."
-        );
-    }
+let bidangTerpilih = "";
 
-    else if (kondisi == "4") {
-        alert(
-            "HASIL REFLEKSI DIRI\n\n" +
-            "Kamu sedang merasakan kecemasan atau kekhawatiran.\n\n" +
-            "Dalam BK, mengenali sumber kecemasan merupakan langkah " +
-            "awal agar seseorang dapat memahami dirinya dan menentukan " +
-            "cara menghadapi situasi dengan lebih tepat.\n\n" +
-            "Cobalah membedakan antara hal yang dapat kamu kendalikan " +
-            "dan hal yang berada di luar kendalimu.\n\n" +
-            "REFLEKSI:\n" +
-            "Hal apa yang paling membuatmu merasa khawatir saat ini?\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Tarik napas perlahan, beri waktu untuk dirimu, lalu " +
-            "coba tuliskan hal yang menjadi sumber kekhawatiranmu."
-        );
-    }
 
-    else if (kondisi == "5") {
-        alert(
-            "HASIL REFLEKSI DIRI\n\n" +
-            "Kamu sedang mengalami kebingungan dalam memahami kondisi " +
-            "atau menentukan arah yang ingin kamu ambil.\n\n" +
-            "Dalam BK, proses mengenali diri dapat membantu seseorang " +
-            "memahami minat, kebutuhan, kemampuan, nilai diri, serta " +
-            "pilihan yang tersedia sebelum mengambil keputusan.\n\n" +
-            "Kamu tidak harus menemukan semua jawabannya sekaligus. " +
-            "Mulailah dengan mengenali satu hal yang paling ingin " +
-            "kamu pahami terlebih dahulu.\n\n" +
-            "REFLEKSI:\n" +
-            "Hal apa yang paling membuatmu bingung saat ini?\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Kamu dapat menggunakan fitur Peta Masalah untuk membantu " +
-            "mengidentifikasi masalah yang sedang kamu hadapi."
-        );
-    }
+/* =========================================
+   FUNGSI UMUM MENAMPILKAN HASIL
+========================================= */
 
-    else {
-        alert(
-            "Pilihan belum sesuai.\n\n" +
-            "Silakan pilih angka 1 sampai 5."
-        );
-    }
+function tampilkanHasil(html) {
+
+    const hasil = document.getElementById("hasil");
+
+    if (!hasil) return;
+
+    hasil.innerHTML = html;
+    hasil.style.display = "block";
+
+    hasil.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
 }
 
+
+/* =========================================
+   CEK KONDISI DIRI
+========================================= */
+
+function cekKondisi() {
+
+    const pilihan = prompt(
+        "Bagaimana kondisi kamu saat ini?\n\n" +
+        "1. Senang\n" +
+        "2. Biasa saja\n" +
+        "3. Sedih\n" +
+        "4. Cemas\n" +
+        "5. Bingung"
+    );
+
+    if (!pilihan) return;
+
+    let judul = "";
+    let pesan = "";
+
+    switch (pilihan) {
+
+        case "1":
+            judul = "Kondisimu terlihat cukup positif 🌤️";
+            pesan =
+                "Kamu sedang merasakan hal yang menyenangkan. " +
+                "Pertahankan hal-hal positif yang membuatmu nyaman.";
+            break;
+
+        case "2":
+            judul = "Kondisimu cukup stabil 🌱";
+            pesan =
+                "Kondisimu terlihat cukup biasa atau stabil. " +
+                "Tetap perhatikan perubahan perasaan dan kebutuhanmu.";
+            break;
+
+        case "3":
+            judul = "Kamu sedang merasa kurang nyaman 💙";
+            pesan =
+                "Perasaan sedih bisa muncul karena berbagai hal. " +
+                "Cobalah mengenali apa yang menjadi penyebabnya.";
+            break;
+
+        case "4":
+            judul = "Kamu mungkin sedang merasa khawatir 💭";
+            pesan =
+                "Cobalah mengenali hal yang membuatmu merasa cemas " +
+                "dan pertimbangkan untuk bercerita kepada orang yang dipercaya.";
+            break;
+
+        case "5":
+            judul = "Kamu sedang merasa bingung 🧩";
+            pesan =
+                "Tidak apa-apa jika kamu belum menemukan jawabannya. " +
+                "Mengenali masalah secara perlahan dapat membantu.";
+            break;
+
+        default:
+            judul = "Pilihan belum dikenali";
+            pesan = "Silakan pilih angka 1 sampai 5.";
+    }
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>${judul}</h3>
+
+            <p>
+                ${pesan}
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   PAHAMI PERASAAN
+========================================= */
+
 function pahamiPerasaan() {
-    let perasaan = prompt(
-        "PAHAMI PERASAANMU\n\n" +
-        "Layanan ini membantu kamu mengenali emosi yang sedang " +
-        "dirasakan dan memahami kebutuhan dirimu.\n\n" +
-        "Perasaan apa yang paling kamu rasakan saat ini?\n\n" +
+
+    const pilihan = prompt(
+        "Perasaan apa yang paling kamu rasakan?\n\n" +
         "1. Senang\n" +
         "2. Sedih\n" +
         "3. Cemas\n" +
@@ -112,1027 +122,1725 @@ function pahamiPerasaan() {
         "5. Bingung"
     );
 
-    if (perasaan == "1") {
-        alert(
-            "MEMAHAMI PERASAAN: SENANG\n\n" +
-            "Perasaan senang dapat muncul ketika kebutuhan, harapan, " +
-            "atau sesuatu yang bermakna bagi dirimu terpenuhi.\n\n" +
-            "Dalam BK, mengenali hal-hal yang membuatmu merasa positif " +
-            "dapat membantu kamu memahami kekuatan dan sumber dukungan " +
-            "dalam dirimu.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa yang membuatmu merasa senang hari ini?\n\n" +
-            "PENGEMBANGAN DIRI:\n" +
-            "Coba pertahankan kegiatan positif yang membuatmu merasa " +
-            "bermakna dan tetap menghargai dirimu sendiri."
-        );
-    }
+    if (!pilihan) return;
 
-    else if (perasaan == "2") {
-        alert(
-            "MEMAHAMI PERASAAN: SEDIH\n\n" +
-            "Sedih merupakan salah satu emosi yang dapat muncul ketika " +
-            "seseorang mengalami kehilangan, kekecewaan, tekanan, atau " +
-            "situasi yang tidak sesuai dengan harapan.\n\n" +
-            "Perasaan tersebut tidak perlu langsung diabaikan. " +
-            "Mengenali dan memahami penyebabnya dapat menjadi langkah " +
-            "awal dalam memahami kebutuhan diri.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa yang mungkin menjadi penyebab kesedihanmu?\n\n" +
-            "KEBUTUHAN DIRI:\n" +
-            "Apa yang kamu butuhkan saat ini: waktu untuk beristirahat, " +
-            "bercerita, dukungan dari orang lain, atau menyelesaikan " +
-            "masalah tertentu?"
-        );
-    }
+    const perasaan = {
 
-    else if (perasaan == "3") {
-        alert(
-            "MEMAHAMI PERASAAN: CEMAS\n\n" +
-            "Cemas dapat muncul ketika seseorang menghadapi sesuatu " +
-            "yang dianggap tidak pasti, sulit, atau berada di luar " +
-            "kendali dirinya.\n\n" +
-            "Dalam BK, memahami sumber kecemasan dapat membantu seseorang " +
-            "menentukan respons yang lebih sesuai terhadap situasi yang " +
-            "dihadapinya.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa yang sedang kamu khawatirkan?\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Coba bedakan hal yang dapat kamu kendalikan dengan hal yang " +
-            "tidak dapat kamu kendalikan. Fokuslah terlebih dahulu pada " +
-            "hal yang masih dapat kamu lakukan."
-        );
-    }
+        "1": [
+            "Senang 😊",
+            "Nikmati hal positif yang sedang kamu rasakan dan pertahankan aktivitas yang membuatmu nyaman."
+        ],
 
-    else if (perasaan == "4") {
-        alert(
-            "MEMAHAMI PERASAAN: MARAH\n\n" +
-            "Marah dapat muncul ketika seseorang merasa terganggu, " +
-            "kecewa, tidak dihargai, atau menghadapi sesuatu yang " +
-            "dianggap tidak sesuai dengan harapannya.\n\n" +
-            "Emosi marah merupakan informasi tentang sesuatu yang sedang " +
-            "terjadi dalam diri. Yang penting adalah bagaimana emosi " +
-            "tersebut dikelola dan disampaikan dengan cara yang tepat.\n\n" +
-            "REFLEKSI:\n" +
-            "Situasi apa yang membuatmu merasa marah?\n\n" +
-            "PENGELOLAAN DIRI:\n" +
-            "Berikan jeda sebelum merespons. Setelah lebih tenang, coba " +
-            "pahami kebutuhanmu dan sampaikan perasaanmu dengan cara " +
-            "yang tidak merugikan diri sendiri maupun orang lain."
-        );
-    }
+        "2": [
+            "Sedih 💙",
+            "Cobalah memberi ruang untuk perasaanmu dan ceritakan kepada orang yang kamu percaya jika diperlukan."
+        ],
 
-    else if (perasaan == "5") {
-        alert(
-            "MEMAHAMI PERASAAN: BINGUNG\n\n" +
-            "Bingung dapat muncul ketika seseorang menghadapi banyak " +
-            "pikiran, pilihan, tuntutan, atau belum memahami apa yang " +
-            "sebenarnya diinginkan.\n\n" +
-            "Dalam BK, proses memahami diri dapat membantu seseorang " +
-            "mengenali kebutuhan, kemampuan, minat, nilai, dan pilihan " +
-            "sebelum mengambil keputusan.\n\n" +
-            "REFLEKSI:\n" +
-            "Apa hal utama yang sedang memenuhi pikiranmu?\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Tuliskan satu masalah yang paling ingin kamu pahami terlebih " +
-            "dahulu. Tidak perlu menyelesaikan semuanya sekaligus."
-        );
-    }
+        "3": [
+            "Cemas 🌧️",
+            "Kenali hal yang membuatmu khawatir dan coba lakukan aktivitas yang membantu dirimu merasa lebih tenang."
+        ],
 
-    else {
-        alert(
-            "Pilihan belum sesuai.\n\n" +
-            "Silakan pilih angka 1 sampai 5."
-        );
-    }
-}
-function ruangCerita() {
-    let cerita = prompt(
-        "RUANG CERITA\n\n" +
-        "Ruang ini dapat digunakan untuk menuangkan pikiran, " +
-        "perasaan, atau pengalaman yang sedang kamu hadapi.\n\n" +
-        "Dalam proses BK, bercerita dapat menjadi salah satu langkah " +
-        "untuk membantu seseorang memahami apa yang sedang dialaminya.\n\n" +
-        "Kamu bisa menuliskan apa yang sedang ada di pikiranmu.\n\n" +
-        "CATATAN PRIVASI:\n" +
-        "Jangan tuliskan nama lengkap, alamat rumah, nomor telepon, " +
-        "kata sandi, atau informasi pribadi lainnya."
-    );
+        "4": [
+            "Marah 🔥",
+            "Berikan waktu untuk menenangkan diri sebelum mengambil keputusan atau menyampaikan sesuatu."
+        ],
 
-    if (cerita && cerita.trim() !== "") {
+        "5": [
+            "Bingung 🧩",
+            "Coba tuliskan hal yang sedang membuatmu bingung agar lebih mudah melihat masalahnya."
+        ]
+    };
 
-        alert(
-            "TERIMA KASIH SUDAH BERCERITA\n\n" +
-            "Kamu sudah meluangkan waktu untuk mengungkapkan apa yang " +
-            "sedang kamu pikirkan atau rasakan.\n\n" +
-            "Coba tanyakan kepada dirimu:\n\n" +
-            "• Apa yang sebenarnya sedang aku rasakan?\n" +
-            "• Apa yang menjadi penyebabnya?\n" +
-            "• Apa yang sebenarnya aku butuhkan saat ini?\n" +
-            "• Apakah ada orang yang dapat menjadi tempatku mencari dukungan?\n\n" +
-            "REFLEKSI BK:\n" +
-            "Mengenali dan mengungkapkan perasaan merupakan salah satu " +
-            "langkah awal dalam proses memahami diri."
-        );
+    if (!perasaan[pilihan]) {
 
-    } else {
+        tampilkanHasil(`
+            <div class="hasil-card">
 
-        alert(
-            "TIDAK APA-APA\n\n" +
-            "Kamu belum ingin bercerita sekarang.\n\n" +
-            "Setiap orang memiliki waktu yang berbeda untuk menceritakan " +
-            "apa yang sedang dialaminya. Kamu dapat kembali menggunakan " +
-            "Ruang Cerita ketika sudah merasa lebih siap."
-        );
-    }
-}
+                <h3>Pilihan belum dikenali</h3>
 
-function layananKonseling() {
+                <p>
+                    Silakan pilih angka 1 sampai 5.
+                </p>
 
-    let bidang = prompt(
-        "LAYANAN KONSELING\n\n" +
-        "Pilih bidang yang paling sesuai dengan kebutuhanmu.\n\n" +
-        "1. Pribadi\n" +
-        "2. Sosial\n" +
-        "3. Belajar\n" +
-        "4. Karier"
-    );
+            </div>
+        `);
 
-    // =========================
-    // BIDANG PRIBADI
-    // =========================
-
-    if (bidang == "1") {
-
-        let masalah = prompt(
-            "BIDANG PRIBADI\n\n" +
-            "Hal apa yang paling ingin kamu pahami?\n\n" +
-            "1. Kepercayaan diri\n" +
-            "2. Pengelolaan emosi\n" +
-            "3. Mengenali diri\n" +
-            "4. Penyesuaian diri"
-        );
-
-        if (masalah == "1") {
-
-            let penyebab = prompt(
-                "KEPERCAYAAN DIRI\n\n" +
-                "Apa yang paling memengaruhi rasa percaya dirimu?\n\n" +
-                "1. Takut dinilai orang lain\n" +
-                "2. Sering membandingkan diri\n" +
-                "3. Takut melakukan kesalahan\n" +
-                "4. Merasa kurang mampu"
-            );
-
-            if (penyebab >= 1 && penyebab <= 4) {
-
-                alert(
-                    "REFLEKSI DIRI\n\n" +
-                    "Kamu sedang mencoba memahami hal yang memengaruhi " +
-                    "kepercayaan dirimu.\n\n" +
-                    "Dalam BK, mengenali pikiran dan pengalaman yang " +
-                    "memengaruhi kepercayaan diri merupakan salah satu " +
-                    "langkah dalam proses pengembangan diri.\n\n" +
-                    "LANGKAH AWAL:\n" +
-                    "Coba tuliskan tiga kemampuan atau hal positif yang " +
-                    "pernah berhasil kamu lakukan.\n\n" +
-                    "Ingat, kemampuan seseorang tidak hanya dilihat dari " +
-                    "keberhasilan, tetapi juga dari proses belajar dan usaha."
-                );
-
-            } else {
-                alert("Silakan pilih angka 1 sampai 4.");
-            }
-
-        }
-
-        else if (masalah == "2") {
-
-            let emosi = prompt(
-                "PENGELOLAAN EMOSI\n\n" +
-                "Emosi apa yang paling sering sulit kamu kelola?\n\n" +
-                "1. Sedih\n" +
-                "2. Cemas\n" +
-                "3. Marah\n" +
-                "4. Kecewa"
-            );
-
-            if (emosi >= 1 && emosi <= 4) {
-
-                alert(
-                    "MEMAHAMI EMOSI\n\n" +
-                    "Emosi merupakan bagian dari pengalaman manusia. " +
-                    "Mengenali emosi dapat membantu kamu memahami " +
-                    "apa yang sedang terjadi dalam dirimu.\n\n" +
-                    "REFLEKSI:\n" +
-                    "Apa yang biasanya terjadi sebelum emosi tersebut muncul?\n\n" +
-                    "LANGKAH AWAL:\n" +
-                    "Coba beri jeda sebelum merespons suatu situasi. " +
-                    "Kenali perasaan, pikiran, dan kebutuhanmu terlebih dahulu."
-                );
-
-            } else {
-                alert("Silakan pilih angka 1 sampai 4.");
-            }
-
-        }
-
-        else if (masalah == "3") {
-
-            alert(
-                "MENGENALI DIRI\n\n" +
-                "Pengenalan diri membantu kamu memahami karakteristik, " +
-                "minat, kemampuan, kebutuhan, serta hal-hal yang penting " +
-                "bagi dirimu.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa kelebihan yang kamu miliki?\n\n" +
-                "Apa hal yang masih ingin kamu kembangkan?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Tuliskan satu kelebihan dan satu hal yang ingin kamu kembangkan."
-            );
-
-        }
-
-        else if (masalah == "4") {
-
-            alert(
-                "PENYESUAIAN DIRI\n\n" +
-                "Penyesuaian diri berkaitan dengan kemampuan seseorang " +
-                "menghadapi perubahan dan tuntutan dari lingkungan.\n\n" +
-                "REFLEKSI:\n" +
-                "Situasi apa yang membuatmu sulit menyesuaikan diri?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Kenali bagian dari situasi yang dapat kamu kendalikan " +
-                "dan tentukan satu tindakan kecil yang dapat kamu lakukan."
-            );
-
-        }
-
-        else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-
-    // =========================
-    // BIDANG SOSIAL
-    // =========================
-
-    else if (bidang == "2") {
-
-        let masalah = prompt(
-            "BIDANG SOSIAL\n\n" +
-            "Hal apa yang sedang kamu hadapi?\n\n" +
-            "1. Masalah pertemanan\n" +
-            "2. Kesulitan berkomunikasi\n" +
-            "3. Konflik dengan orang lain\n" +
-            "4. Sulit menyesuaikan diri"
-        );
-
-        if (masalah == "1") {
-
-            let teman = prompt(
-                "MASALAH PERTEMANAN\n\n" +
-                "Apa yang paling kamu rasakan dalam hubungan pertemanan?\n\n" +
-                "1. Merasa dijauhi\n" +
-                "2. Sering terjadi salah paham\n" +
-                "3. Sulit mendapatkan teman\n" +
-                "4. Konflik dengan teman"
-            );
-
-            if (teman >= 1 && teman <= 4) {
-
-                alert(
-                    "REFLEKSI HUBUNGAN SOSIAL\n\n" +
-                    "Hubungan dengan teman dapat memengaruhi kenyamanan " +
-                    "seseorang dalam lingkungan sosial.\n\n" +
-                    "REFLEKSI:\n" +
-                    "Apa yang sebenarnya kamu harapkan dari hubungan tersebut?\n\n" +
-                    "LANGKAH AWAL:\n" +
-                    "Cobalah memahami situasi dari sudut pandangmu dan " +
-                    "orang lain. Jika memungkinkan, komunikasikan masalah " +
-                    "dengan cara yang tenang dan saling menghargai."
-                );
-
-            } else {
-                alert("Silakan pilih angka 1 sampai 4.");
-            }
-
-        }
-
-        else if (masalah == "2") {
-
-            alert(
-                "KOMUNIKASI INTERPERSONAL\n\n" +
-                "Komunikasi yang baik bukan hanya tentang menyampaikan " +
-                "pendapat, tetapi juga mendengarkan dan memahami orang lain.\n\n" +
-                "REFLEKSI:\n" +
-                "Apakah kamu lebih sering sulit menyampaikan perasaan, " +
-                "pendapat, atau memahami orang lain?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Cobalah menyampaikan perasaan menggunakan kalimat yang " +
-                "jelas tanpa menyalahkan orang lain."
-            );
-
-        }
-
-        else if (masalah == "3") {
-
-            alert(
-                "MENGELOLA KONFLIK\n\n" +
-                "Konflik merupakan bagian dari interaksi sosial. " +
-                "Yang penting adalah bagaimana konflik tersebut dihadapi.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang menjadi sumber utama konflik tersebut?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Berikan waktu untuk menenangkan diri sebelum membicarakan " +
-                "masalah. Fokus pada masalah, bukan menyerang pribadi orang lain."
-            );
-
-        }
-
-        else if (masalah == "4") {
-
-            alert(
-                "PENYESUAIAN SOSIAL\n\n" +
-                "Beradaptasi dengan lingkungan baru membutuhkan waktu. " +
-                "Setiap orang memiliki proses penyesuaian yang berbeda.\n\n" +
-                "REFLEKSI:\n" +
-                "Bagian apa dari lingkunganmu yang paling sulit kamu hadapi?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Mulailah dari interaksi sederhana dengan orang yang " +
-                "membuatmu merasa cukup nyaman."
-            );
-
-        }
-
-        else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-
-    // =========================
-    // BIDANG BELAJAR
-    // =========================
-
-    else if (bidang == "3") {
-
-        let masalah = prompt(
-            "BIDANG BELAJAR\n\n" +
-            "Apa yang paling menghambat proses belajarmu?\n\n" +
-            "1. Kurang motivasi\n" +
-            "2. Sulit berkonsentrasi\n" +
-            "3. Sulit mengatur waktu\n" +
-            "4. Sulit memahami materi"
-        );
-
-        if (masalah == "1") {
-
-            alert(
-                "MOTIVASI BELAJAR\n\n" +
-                "Motivasi dapat memengaruhi kemauan seseorang untuk " +
-                "memulai dan mempertahankan kegiatan belajar.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa alasan utama kamu ingin belajar atau mencapai tujuanmu?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Tentukan satu tujuan belajar yang jelas dan realistis. " +
-                "Mulailah dari target kecil yang dapat kamu lakukan secara konsisten."
-            );
-
-        }
-
-        else if (masalah == "2") {
-
-            alert(
-                "KONSENTRASI BELAJAR\n\n" +
-                "Kesulitan berkonsentrasi dapat dipengaruhi oleh kondisi " +
-                "lingkungan, kebiasaan, pikiran, maupun pengelolaan waktu.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang paling sering mengganggu konsentrasimu saat belajar?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Coba belajar dalam waktu tertentu dengan mengurangi " +
-                "gangguan yang tidak diperlukan."
-            );
-
-        }
-
-        else if (masalah == "3") {
-
-            let waktu = prompt(
-                "MANAJEMEN WAKTU BELAJAR\n\n" +
-                "Apa yang paling membuat jadwal belajarmu tidak teratur?\n\n" +
-                "1. Sering menunda tugas\n" +
-                "2. Terlalu banyak kegiatan\n" +
-                "3. Tidak tahu menentukan prioritas\n" +
-                "4. Sulit konsisten"
-            );
-
-            if (waktu >= 1 && waktu <= 4) {
-
-                alert(
-                    "REFLEKSI MANAJEMEN WAKTU\n\n" +
-                    "Mengatur waktu merupakan bagian dari keterampilan " +
-                    "belajar dan pengembangan kemandirian.\n\n" +
-                    "LANGKAH AWAL:\n" +
-                    "Buat daftar kegiatan yang harus dilakukan. " +
-                    "Tentukan mana yang paling penting dan kerjakan " +
-                    "secara bertahap.\n\n" +
-                    "Tidak perlu langsung membuat jadwal yang sempurna. " +
-                    "Yang penting adalah menemukan pola yang dapat kamu jalankan."
-                );
-
-            } else {
-                alert("Silakan pilih angka 1 sampai 4.");
-            }
-
-        }
-
-        else if (masalah == "4") {
-
-            alert(
-                "KESULITAN MEMAHAMI MATERI\n\n" +
-                "Kesulitan memahami materi tidak selalu berarti kamu " +
-                "tidak mampu belajar. Setiap orang memiliki cara dan " +
-                "kecepatan belajar yang berbeda.\n\n" +
-                "REFLEKSI:\n" +
-                "Bagian materi apa yang paling sulit kamu pahami?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Coba pecah materi menjadi bagian yang lebih kecil, " +
-                "catat bagian yang belum dipahami, kemudian cari bantuan " +
-                "dari guru, teman, atau sumber belajar yang sesuai."
-            );
-
-        }
-
-        else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-
-    // =========================
-    // BIDANG KARIER
-    // =========================
-
-    else if (bidang == "4") {
-
-        let masalah = prompt(
-            "BIDANG KARIER\n\n" +
-            "Hal apa yang sedang ingin kamu pahami?\n\n" +
-            "1. Minat\n" +
-            "2. Kemampuan dan potensi\n" +
-            "3. Pilihan pendidikan\n" +
-            "4. Perencanaan masa depan"
-        );
-
-        if (masalah == "1") {
-
-            alert(
-                "MENGENALI MINAT\n\n" +
-                "Minat dapat membantu seseorang mengenali bidang " +
-                "yang menarik dan ingin dikembangkan.\n\n" +
-                "REFLEKSI:\n" +
-                "Kegiatan apa yang membuatmu merasa tertarik dan ingin " +
-                "mempelajarinya lebih jauh?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Tuliskan beberapa kegiatan yang kamu sukai, kemudian " +
-                "lihat bidang apa yang memiliki kesamaan."
-            );
-
-        }
-
-        else if (masalah == "2") {
-
-            alert(
-                "MENGENALI KEMAMPUAN DAN POTENSI\n\n" +
-                "Mengenali kemampuan membantu kamu memahami kekuatan " +
-                "yang dapat dikembangkan untuk tujuan pendidikan maupun karier.\n\n" +
-                "REFLEKSI:\n" +
-                "Dalam kegiatan apa kamu merasa cukup mampu atau sering " +
-                "mendapatkan hasil yang baik?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Catat kemampuan yang kamu miliki dan kemampuan yang masih " +
-                "ingin kamu kembangkan."
-            );
-
-        }
-
-        else if (masalah == "3") {
-
-            alert(
-                "PILIHAN PENDIDIKAN\n\n" +
-                "Menentukan pilihan pendidikan sebaiknya mempertimbangkan " +
-                "minat, kemampuan, tujuan, serta informasi mengenai pilihan " +
-                "yang tersedia.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa bidang pendidikan yang sedang kamu pertimbangkan?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Kumpulkan informasi mengenai jurusan atau bidang yang kamu " +
-                "minati sebelum membuat keputusan."
-            );
-
-        }
-
-        else if (masalah == "4") {
-
-            alert(
-                "PERENCANAAN MASA DEPAN\n\n" +
-                "Perencanaan karier merupakan proses yang dapat berkembang " +
-                "seiring dengan pengalaman dan pemahaman diri.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang ingin kamu capai dalam beberapa tahun ke depan?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Tentukan satu tujuan jangka pendek yang dapat kamu mulai " +
-                "lakukan sekarang sebagai bagian dari tujuan jangka panjangmu."
-            );
-
-        }
-
-        else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-
-    else {
-        alert(
-            "Pilihan belum sesuai.\n\n" +
-            "Silakan pilih angka 1 sampai 4."
-        );
-    }
-}
-                
-function petaMasalah() {
-
-    let masalah = prompt(
-        "PETA MASALAH\n\n" +
-        "Fitur ini membantu kamu mengenali masalah yang sedang " +
-        "dihadapi sebelum menentukan langkah yang dapat dilakukan.\n\n" +
-        "Masalah apa yang paling ingin kamu pahami?\n\n" +
-        "1. Belajar\n" +
-        "2. Pertemanan\n" +
-        "3. Keluarga\n" +
-        "4. Percaya diri\n" +
-        "5. Karier"
-    );
-
-    if (masalah == "1") {
-
-        let kondisi = prompt(
-            "PETA MASALAH - BELAJAR\n\n" +
-            "Apa yang paling kamu alami?\n\n" +
-            "1. Kurang motivasi\n" +
-            "2. Sulit berkonsentrasi\n" +
-            "3. Sering menunda tugas\n" +
-            "4. Sulit memahami materi"
-        );
-
-        if (kondisi >= 1 && kondisi <= 4) {
-
-            alert(
-                "HASIL PEMETAAN AWAL\n\n" +
-                "Bidang: Belajar\n\n" +
-                "Kamu sedang mencoba mengenali hambatan yang " +
-                "memengaruhi proses belajarmu.\n\n" +
-                "REFLEKSI:\n" +
-                "Menurutmu, apa yang menjadi penyebab utama masalah tersebut?\n\n" +
-                "DAMPAK:\n" +
-                "Apakah masalah tersebut memengaruhi tugas, nilai, " +
-                "konsentrasi, atau semangat belajarmu?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Tentukan satu hal kecil yang dapat kamu ubah terlebih dahulu. " +
-                "Tidak harus menyelesaikan seluruh masalah sekaligus."
-            );
-
-        } else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-    else if (masalah == "2") {
-
-        let kondisi = prompt(
-            "PETA MASALAH - PERTEMANAN\n\n" +
-            "Apa yang sedang kamu alami?\n\n" +
-            "1. Salah paham dengan teman\n" +
-            "2. Merasa dijauhi\n" +
-            "3. Sulit mendapatkan teman\n" +
-            "4. Konflik dengan teman"
-        );
-
-        if (kondisi >= 1 && kondisi <= 4) {
-
-            alert(
-                "HASIL PEMETAAN AWAL\n\n" +
-                "Bidang: Sosial - Pertemanan\n\n" +
-                "Hubungan sosial dapat memengaruhi kenyamanan seseorang " +
-                "dalam menjalani aktivitas sehari-hari.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang sebenarnya terjadi dalam hubungan tersebut?\n\n" +
-                "PERASAAN:\n" +
-                "Apa yang kamu rasakan akibat situasi tersebut?\n\n" +
-                "KEBUTUHAN:\n" +
-                "Apa yang kamu harapkan dari hubungan tersebut?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Jika situasinya memungkinkan, cobalah membicarakan masalah " +
-                "dengan komunikasi yang tenang dan saling menghargai."
-            );
-
-        } else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-    else if (masalah == "3") {
-
-        let kondisi = prompt(
-            "PETA MASALAH - KELUARGA\n\n" +
-            "Apa yang paling kamu rasakan?\n\n" +
-            "1. Sulit berkomunikasi\n" +
-            "2. Sering terjadi konflik\n" +
-            "3. Merasa kurang dipahami\n" +
-            "4. Merasa tertekan oleh tuntutan"
-        );
-
-        if (kondisi >= 1 && kondisi <= 4) {
-
-            alert(
-                "HASIL PEMETAAN AWAL\n\n" +
-                "Bidang: Pribadi - Keluarga\n\n" +
-                "Masalah dalam keluarga dapat melibatkan berbagai " +
-                "perasaan dan kebutuhan dari setiap anggota keluarga.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa situasi yang paling sering memunculkan masalah tersebut?\n\n" +
-                "PERASAAN:\n" +
-                "Bagaimana situasi tersebut memengaruhi dirimu?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Coba kenali apa yang dapat kamu komunikasikan dengan " +
-                "cara yang tenang. Jika masalah terasa sulit dihadapi " +
-                "sendiri, kamu dapat mencari dukungan dari orang dewasa " +
-                "atau konselor yang dapat dipercaya."
-            );
-
-        } else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-    else if (masalah == "4") {
-
-        let kondisi = prompt(
-            "PETA MASALAH - PERCAYA DIRI\n\n" +
-            "Dalam situasi apa kamu paling merasa kurang percaya diri?\n\n" +
-            "1. Berbicara di depan orang lain\n" +
-            "2. Bergaul dengan teman\n" +
-            "3. Mengemukakan pendapat\n" +
-            "4. Menghadapi tugas atau tantangan"
-        );
-
-        if (kondisi >= 1 && kondisi <= 4) {
-
-            alert(
-                "HASIL PEMETAAN AWAL\n\n" +
-                "Bidang: Pribadi - Kepercayaan Diri\n\n" +
-                "Kepercayaan diri dapat berkembang melalui pengalaman, " +
-                "pengenalan terhadap kemampuan diri, dan kesempatan untuk " +
-                "mencoba secara bertahap.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang biasanya kamu pikirkan ketika berada dalam situasi tersebut?\n\n" +
-                "KEKUATAN DIRI:\n" +
-                "Apa kemampuan yang sebenarnya kamu miliki tetapi belum " +
-                "kamu sadari atau gunakan secara optimal?\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Pilih satu situasi kecil untuk dilatih secara bertahap."
-            );
-
-        } else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-    else if (masalah == "5") {
-
-        let kondisi = prompt(
-            "PETA MASALAH - KARIER\n\n" +
-            "Apa yang sedang kamu pikirkan tentang masa depan?\n\n" +
-            "1. Belum mengetahui minat\n" +
-            "2. Bingung memilih jurusan\n" +
-            "3. Belum mengetahui kemampuan diri\n" +
-            "4. Bingung menentukan rencana masa depan"
-        );
-
-        if (kondisi >= 1 && kondisi <= 4) {
-
-            alert(
-                "HASIL PEMETAAN AWAL\n\n" +
-                "Bidang: Karier\n\n" +
-                "Perencanaan karier dimulai dari proses mengenali diri " +
-                "dan mengumpulkan informasi mengenai berbagai pilihan.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang paling membuatmu ragu terhadap pilihan masa depan?\n\n" +
-                "PEMAHAMAN DIRI:\n" +
-                "Coba pertimbangkan minat, kemampuan, nilai yang kamu anggap " +
-                "penting, serta pengalaman yang pernah kamu miliki.\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Cari informasi tentang pilihan yang sedang kamu pertimbangkan " +
-                "dan bandingkan dengan kondisi serta tujuan dirimu."
-            );
-
-        } else {
-            alert("Silakan pilih angka 1 sampai 4.");
-        }
-    }
-
-    else {
-        alert(
-            "Pilihan belum sesuai.\n\n" +
-            "Silakan pilih angka 1 sampai 5."
-        );
-    }
-}
-
-function skalaPerasaan() {
-
-    let skala = prompt(
-        "SKALA PERASAAN\n\n" +
-        "Nilai kondisi perasaanmu saat ini dari 1 sampai 10.\n\n" +
-        "1 = Sangat tidak nyaman\n" +
-        "5 = Cukup nyaman\n" +
-        "10 = Sangat nyaman\n\n" +
-        "Masukkan angka 1-10:"
-    );
-
-    if (skala >= 1 && skala <= 10) {
-
-        let hasil = "";
-
-        if (skala <= 3) {
-
-            hasil =
-                "KONDISI PERASAAN: PERLU PERHATIAN\n\n" +
-                "Nilai yang kamu pilih menunjukkan bahwa saat ini " +
-                "kamu mungkin sedang merasakan kondisi yang kurang nyaman.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang paling memengaruhi perasaanmu saat ini?\n\n" +
-                "KEBUTUHAN DIRI:\n" +
-                "Coba beri dirimu waktu untuk memahami apa yang sedang " +
-                "kamu rasakan tanpa langsung menyalahkan diri sendiri.\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Kenali satu hal yang membuatmu tidak nyaman dan pikirkan " +
-                "satu langkah kecil yang dapat kamu lakukan.";
-
-        } else if (skala <= 6) {
-
-            hasil =
-                "KONDISI PERASAAN: CUKUP STABIL\n\n" +
-                "Kondisi perasaanmu berada pada tingkat sedang. " +
-                "Kamu dapat menggunakan kesempatan ini untuk memahami " +
-                "apa yang membuatmu merasa lebih nyaman atau kurang nyaman.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang membuat kondisi perasaanmu berada pada angka tersebut?\n\n" +
-                "PEMAHAMAN DIRI:\n" +
-                "Perhatikan situasi, pikiran, dan aktivitas yang memengaruhi " +
-                "perasaanmu sepanjang hari.\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Pertahankan hal-hal yang membantu dirimu merasa lebih baik " +
-                "dan kurangi hal yang membuatmu semakin terbebani.";
-
-        } else {
-
-            hasil =
-                "KONDISI PERASAAN: CUKUP NYAMAN\n\n" +
-                "Kondisi perasaanmu saat ini berada pada tingkat yang cukup nyaman.\n\n" +
-                "REFLEKSI:\n" +
-                "Apa yang sedang terjadi atau kamu lakukan sehingga merasa cukup nyaman?\n\n" +
-                "KEKUATAN DIRI:\n" +
-                "Kenali kebiasaan, dukungan, atau aktivitas yang membantu " +
-                "menjaga kondisi positif tersebut.\n\n" +
-                "LANGKAH AWAL:\n" +
-                "Pertahankan kebiasaan positif dan tetap berikan ruang bagi " +
-                "dirimu untuk mengenali perubahan perasaan.";
-        }
-
-        alert(
-            "HASIL SKALA PERASAAN\n\n" +
-            "Nilai yang kamu pilih: " + skala + "/10\n\n" +
-            hasil +
-            "\n\nCatatan: fitur ini merupakan media refleksi diri, " +
-            "bukan alat diagnosis."
-        );
-
-    } else {
-
-        alert(
-            "Input belum sesuai.\n\n" +
-            "Silakan masukkan angka dari 1 sampai 10."
-        );
-    }
-}
-
-function rekomendasiLayanan() {
-
-    let kebutuhan = prompt(
-        "REKOMENDASI LAYANAN BK\n\n" +
-        "Pilih kebutuhan yang paling sesuai dengan kondisi kamu:\n\n" +
-        "1. Saya ingin lebih memahami diri sendiri\n" +
-        "2. Saya sedang mengalami masalah dengan teman\n" +
-        "3. Saya kesulitan dalam belajar\n" +
-        "4. Saya bingung menentukan pilihan masa depan\n" +
-        "5. Saya sedang mengalami masalah dalam keluarga"
-    );
-
-    if (kebutuhan == "1") {
-
-        alert(
-            "REKOMENDASI LAYANAN\n\n" +
-            "Bidang: PRIBADI\n\n" +
-            "Layanan yang sesuai:\n" +
-            "Pemahaman dan pengembangan diri.\n\n" +
-            "Fokus:\n" +
-            "• Mengenali kelebihan dan kekurangan diri\n" +
-            "• Memahami perasaan dan kebutuhan diri\n" +
-            "• Meningkatkan kepercayaan diri\n" +
-            "• Mengembangkan kemampuan mengelola emosi\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Kamu dapat menggunakan fitur Cek Kondisi Diri atau " +
-            "Pahami Perasaanmu untuk melakukan refleksi awal."
-        );
-
-    }
-
-    else if (kebutuhan == "2") {
-
-        alert(
-            "REKOMENDASI LAYANAN\n\n" +
-            "Bidang: SOSIAL\n\n" +
-            "Layanan yang sesuai:\n" +
-            "Pengembangan hubungan sosial dan komunikasi interpersonal.\n\n" +
-            "Fokus:\n" +
-            "• Memahami hubungan dengan teman\n" +
-            "• Meningkatkan kemampuan komunikasi\n" +
-            "• Mengatasi salah paham\n" +
-            "• Mengembangkan hubungan sosial yang sehat\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Coba gunakan fitur Peta Masalah untuk memahami " +
-            "situasi sosial yang sedang kamu alami."
-        );
-
-    }
-
-    else if (kebutuhan == "3") {
-
-        alert(
-            "REKOMENDASI LAYANAN\n\n" +
-            "Bidang: BELAJAR\n\n" +
-            "Layanan yang sesuai:\n" +
-            "Pengembangan kebiasaan dan keterampilan belajar.\n\n" +
-            "Fokus:\n" +
-            "• Meningkatkan motivasi belajar\n" +
-            "• Mengatur waktu belajar\n" +
-            "• Meningkatkan konsentrasi\n" +
-            "• Mengatasi kesulitan memahami materi\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Identifikasi hambatan belajar yang paling sering kamu alami " +
-            "dan tentukan satu perubahan kecil yang bisa dilakukan."
-        );
-
-    }
-
-    else if (kebutuhan == "4") {
-
-        alert(
-            "REKOMENDASI LAYANAN\n\n" +
-            "Bidang: KARIER\n\n" +
-            "Layanan yang sesuai:\n" +
-            "Perencanaan dan pengembangan karier.\n\n" +
-            "Fokus:\n" +
-            "• Mengenali minat\n" +
-            "• Mengenali kemampuan dan potensi\n" +
-            "• Mempertimbangkan pilihan pendidikan\n" +
-            "• Menentukan tujuan masa depan\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Mulailah dengan mengenali hal yang kamu minati, " +
-            "kemampuan yang kamu miliki, dan pilihan yang sedang kamu pertimbangkan."
-        );
-
-    }
-
-    else if (kebutuhan == "5") {
-
-        alert(
-            "REKOMENDASI LAYANAN\n\n" +
-            "Bidang: PRIBADI - KELUARGA\n\n" +
-            "Layanan yang sesuai:\n" +
-            "Pemahaman diri dan pengembangan kemampuan komunikasi.\n\n" +
-            "Fokus:\n" +
-            "• Memahami perasaan dalam situasi keluarga\n" +
-            "• Mengenali kebutuhan diri\n" +
-            "• Mengembangkan komunikasi yang sehat\n" +
-            "• Menentukan cara menghadapi masalah secara lebih tepat\n\n" +
-            "LANGKAH AWAL:\n" +
-            "Kenali situasi yang paling membuatmu tidak nyaman. " +
-            "Jika masalah terasa berat, kamu dapat mencari bantuan " +
-            "dari konselor atau orang dewasa yang dapat dipercaya."
-        );
-
-    }
-
-    else {
-
-        alert(
-            "Pilihan belum sesuai.\n\n" +
-            "Silakan pilih angka 1 sampai 5."
-        );
-    }
-}
-function catatanKonseling() {
-
-    let catatan = prompt(
-        "CATATAN REFLEKSI DIRI\n\n" +
-        "Tuliskan hal yang sedang ingin kamu pahami atau ceritakan.\n\n" +
-        "Contoh:\n" +
-        "Saya akhir-akhir ini sulit fokus belajar karena banyak pikiran.\n\n" +
-        "Silakan tuliskan catatanmu:"
-    );
-
-    if (catatan != null && catatan.trim() != "") {
-
-        let hasil = document.getElementById("hasil");
-
-        hasil.innerHTML =
-            "<div class='hasil-card'>" +
-            "<h3>Catatan Refleksi</h3>" +
-            "<p><strong>Catatan kamu:</strong></p>" +
-            "<p>" + catatan + "</p>" +
-            "<hr>" +
-            "<p><strong>Refleksi:</strong></p>" +
-            "<p>Apa yang sebenarnya sedang kamu rasakan atau butuhkan dari situasi tersebut?</p>" +
-            "<p><strong>Langkah awal:</strong></p>" +
-            "<p>Tentukan satu hal kecil yang dapat kamu lakukan untuk membantu dirimu menghadapi situasi tersebut.</p>" +
-            "<p><em>Catatan ini merupakan media refleksi diri dan bukan diagnosis.</em></p>" +
-            "</div>";
-
-    } else {
-
-        alert(
-            "Catatan belum diisi.\n\n" +
-            "Kamu dapat menuliskan apa yang sedang kamu pikirkan " +
-            "ketika sudah merasa siap."
-        );
-    }
-}
-
-const URL_GOOGLE_SHEETS = "https://script.google.com/macros/s/AKfycbxFFcE--YGOg1ojOE0R5gGM4IvHzZGpZ514p3fqrNc4ztmMHVrhUoGKVvgLCU9TuvR3BQ/exec";
-
-function kirimAngket() {
-    const nama = document.getElementById("namaAngket").value.trim();
-    const kelas = document.getElementById("kelasAngket").value.trim();
-    const kondisi = document.getElementById("kondisiAngket").value;
-    const perasaan = document.getElementById("perasaanAngket").value;
-    const bidang = document.getElementById("bidangAngket").value;
-    const skala = document.getElementById("skalaAngket").value;
-    const catatan = document.getElementById("catatanAngket").value.trim();
-
-    if (!nama || !kelas || !kondisi || !perasaan || !bidang || !skala) {
-        alert("Mohon lengkapi semua bagian angket terlebih dahulu.");
         return;
     }
 
-    const data = {
-        nama: nama,
-        kelas: kelas,
-        kondisi: kondisi,
-        perasaan: perasaan,
-        bidang: bidang,
-        skala: skala,
-        catatan: catatan
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                Perasaanmu: ${perasaan[pilihan][0]}
+            </h3>
+
+            <p>
+                ${perasaan[pilihan][1]}
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   SKALA PERASAAN
+========================================= */
+
+function skalaPerasaan() {
+
+    const nilai = prompt(
+        "Seberapa nyaman kondisi perasaanmu saat ini?\n\n" +
+        "Masukkan angka 1 sampai 10.\n\n" +
+        "1 = Sangat tidak nyaman\n" +
+        "10 = Sangat nyaman"
+    );
+
+    if (!nilai) return;
+
+    const angka = Number(nilai);
+
+    if (isNaN(angka) || angka < 1 || angka > 10) {
+
+        tampilkanHasil(`
+            <div class="hasil-card">
+
+                <h3>Nilai belum sesuai</h3>
+
+                <p>
+                    Masukkan angka antara 1 sampai 10.
+                </p>
+
+            </div>
+        `);
+
+        return;
+    }
+
+    let keterangan = "";
+
+    if (angka <= 3) {
+
+        keterangan =
+            "Kondisi perasaanmu mungkin sedang kurang nyaman. Pertimbangkan untuk bercerita kepada orang yang dipercaya.";
+
+    } else if (angka <= 6) {
+
+        keterangan =
+            "Kondisimu berada pada tingkat cukup nyaman. Tetap perhatikan perubahan perasaanmu.";
+
+    } else {
+
+        keterangan =
+            "Kondisimu terlihat cukup nyaman. Pertahankan hal-hal positif yang mendukung kesejahteraanmu.";
+    }
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                📊 Skala Perasaan: ${angka}/10
+            </h3>
+
+            <p>
+                ${keterangan}
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   LAYANAN KONSELING
+========================================= */
+
+function layananKonseling() {
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                🤝 Layanan Konseling
+            </h3>
+
+            <p>
+                Layanan konseling dapat membantu siswa memahami
+                masalah, perasaan, hubungan sosial, proses belajar,
+                maupun perencanaan masa depan.
+            </p>
+
+            <p>
+                Jika kamu merasa membutuhkan bantuan lebih lanjut,
+                kamu dapat menghubungi guru BK atau konselor
+                untuk mendapatkan layanan secara langsung.
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   PETA MASALAH
+========================================= */
+
+function petaMasalah() {
+
+    const pilihan = prompt(
+        "Bidang apa yang paling ingin kamu perhatikan?\n\n" +
+        "1. Pribadi\n" +
+        "2. Sosial / Pertemanan\n" +
+        "3. Belajar\n" +
+        "4. Karier\n" +
+        "5. Keluarga\n" +
+        "6. Pengembangan Diri"
+    );
+
+    if (!pilihan) return;
+
+    const bidang = {
+
+        "1": "Pribadi 💙",
+        "2": "Sosial / Pertemanan 👥",
+        "3": "Belajar 📚",
+        "4": "Karier 🎯",
+        "5": "Keluarga 🏠",
+        "6": "Pengembangan Diri 🌱"
     };
 
-    fetch(URL_GOOGLE_SHEETS, {
-        method: "POST",
-        mode: "no-cors",
-        body: JSON.stringify(data)
-    })
-    .then(() => {
-        alert(
-            "ANGKET BERHASIL DIKIRIM!\n\n" +
-            "Terima kasih sudah mengisi angket KONSELINGKU."
-        );
+    if (!bidang[pilihan]) {
 
-        document.getElementById("namaAngket").value = "";
-document.getElementById("kelasAngket").value = "";
-document.getElementById("kondisiAngket").value = "";
-document.getElementById("perasaanAngket").value = "";
-document.getElementById("bidangAngket").value = "";
-document.getElementById("skalaAngket").value = "";
-document.getElementById("catatanAngket").value = "";
-    })
-    .catch((error) => {
-        console.error(error);
-        alert(
-            "Angket belum berhasil dikirim.\n\n" +
-            "Silakan coba lagi."
-        );
+        tampilkanHasil(`
+            <div class="hasil-card">
+
+                <h3>
+                    Pilihan belum dikenali
+                </h3>
+
+                <p>
+                    Silakan pilih angka 1 sampai 6.
+                </p>
+
+            </div>
+        `);
+
+        return;
+    }
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                Bidang yang kamu pilih
+            </h3>
+
+            <p>
+                <strong>
+                    ${bidang[pilihan]}
+                </strong>
+            </p>
+
+            <p>
+                Bidang ini dapat menjadi fokus awal
+                untuk mengenali kebutuhanmu.
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   RUANG CERITA
+========================================= */
+
+function ruangCerita() {
+
+    const cerita = prompt(
+        "Apa yang ingin kamu ceritakan?\n\n" +
+        "Tuliskan secara singkat. Hindari menuliskan " +
+        "alamat rumah, kata sandi, atau informasi sangat sensitif."
+    );
+
+    if (!cerita) return;
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                💬 Ruang Cerita
+            </h3>
+
+            <p>
+                Terima kasih sudah menuliskan ceritamu.
+                Mengenali dan mengungkapkan apa yang dirasakan
+                dapat menjadi langkah awal untuk memahami diri.
+            </p>
+
+            <p>
+                Jika cerita tersebut membuatmu membutuhkan
+                bantuan lebih lanjut, kamu dapat menghubungi
+                guru BK atau konselor.
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   REKOMENDASI LAYANAN
+========================================= */
+
+function rekomendasiLayanan() {
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                💡 Rekomendasi Layanan
+            </h3>
+
+            <p>
+                Untuk mengetahui layanan yang paling sesuai
+                dengan kebutuhanmu, kamu dapat menggunakan
+                Pemetaan Diri.
+            </p>
+
+            <p>
+                Hasil pemetaan dapat membantu memberikan
+                gambaran awal mengenai bidang yang membutuhkan
+                perhatian.
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   CATATAN KONSELING
+========================================= */
+
+function catatanKonseling() {
+
+    tampilkanHasil(`
+        <div class="hasil-card">
+
+            <h3>
+                📝 Catatan Konseling
+            </h3>
+
+            <p>
+                Catatan konseling dapat digunakan untuk
+                mengingat hal-hal penting yang ingin kamu
+                sampaikan atau diskusikan bersama konselor.
+            </p>
+
+            <p>
+                Untuk menjaga privasi, hindari menuliskan
+                informasi pribadi yang sangat sensitif.
+            </p>
+
+        </div>
+    `);
+}
+
+
+/* =========================================
+   DATA 6 BIDANG
+========================================= */
+
+const pertanyaanBidang = {
+
+    "Belajar": [
+
+        "Saya dapat berkonsentrasi saat mengikuti pembelajaran.",
+
+        "Saya mampu memahami materi yang diberikan guru/dosen.",
+
+        "Saya menyelesaikan tugas tepat waktu.",
+
+        "Saya merasa malas ketika harus belajar.",
+
+        "Saya kesulitan memahami materi tertentu.",
+
+        "Saya memiliki jadwal belajar yang teratur.",
+
+        "Saya mudah terdistraksi saat belajar.",
+
+        "Saya berusaha mencari bantuan ketika mengalami kesulitan belajar.",
+
+        "Saya merasa percaya diri dengan kemampuan belajar saya.",
+
+        "Saya memiliki motivasi untuk meningkatkan hasil belajar."
+
+    ],
+
+
+    "Pribadi": [
+
+        "Saya merasa percaya diri dengan diri saya sendiri.",
+
+        "Saya mampu mengenali kelebihan dan kekurangan diri.",
+
+        "Saya dapat mengendalikan emosi ketika menghadapi masalah.",
+
+        "Saya sering merasa tidak yakin dengan kemampuan diri sendiri.",
+
+        "Saya mampu menerima kekurangan yang ada dalam diri saya.",
+
+        "Saya mudah merasa cemas ketika menghadapi suatu masalah.",
+
+        "Saya mampu mengambil keputusan untuk diri sendiri.",
+
+        "Saya merasa nyaman menjadi diri saya sendiri.",
+
+        "Saya mampu menghadapi kegagalan tanpa mudah menyerah.",
+
+        "Saya memiliki keinginan untuk menjadi pribadi yang lebih baik."
+
+    ],
+
+
+    "Sosial": [
+
+        "Saya mudah berkomunikasi dengan orang lain.",
+
+        "Saya merasa nyaman berinteraksi dengan teman.",
+
+        "Saya mampu bekerja sama dalam kelompok.",
+
+        "Saya sulit memulai percakapan dengan orang baru.",
+
+        "Saya dapat menghargai pendapat orang lain.",
+
+        "Saya sering merasa takut ditolak oleh teman.",
+
+        "Saya mampu menyelesaikan konflik dengan cara yang baik.",
+
+        "Saya memiliki hubungan yang baik dengan teman-teman.",
+
+        "Saya merasa diterima oleh lingkungan pertemanan saya.",
+
+        "Saya berani menyampaikan pendapat dalam kelompok."
+
+    ],
+
+
+    "Keluarga": [
+
+        "Saya merasa nyaman berkomunikasi dengan keluarga.",
+
+        "Saya mendapatkan dukungan keluarga dalam menghadapi masalah.",
+
+        "Saya dapat menceritakan masalah kepada anggota keluarga.",
+
+        "Saya sering mengalami konflik dengan keluarga.",
+
+        "Keluarga saya menghargai pendapat saya.",
+
+        "Saya merasa diperhatikan oleh keluarga.",
+
+        "Saya merasa terbebani oleh harapan keluarga.",
+
+        "Saya dapat berdiskusi dengan keluarga ketika harus mengambil keputusan.",
+
+        "Saya merasa hubungan saya dengan keluarga cukup harmonis.",
+
+        "Saya merasa keluarga membantu saya dalam menghadapi kesulitan."
+
+    ],
+
+
+    "Karier": [
+
+        "Saya sudah mengetahui pekerjaan yang saya minati.",
+
+        "Saya mengetahui kemampuan yang dapat mendukung karier saya.",
+
+        "Saya memiliki gambaran tentang pekerjaan yang ingin saya lakukan.",
+
+        "Saya masih bingung menentukan pilihan karier.",
+
+        "Saya mencari informasi tentang berbagai pilihan pekerjaan.",
+
+        "Saya mempertimbangkan minat sebelum memilih karier.",
+
+        "Saya takut salah dalam menentukan pilihan karier.",
+
+        "Saya mengetahui pendidikan yang dibutuhkan untuk karier yang saya inginkan.",
+
+        "Saya memiliki rencana untuk mencapai cita-cita saya.",
+
+        "Saya merasa percaya diri dengan pilihan karier saya."
+
+    ],
+
+
+    "Pengembangan Diri": [
+
+        "Saya memiliki keinginan untuk mengembangkan kemampuan diri.",
+
+        "Saya mengetahui potensi yang saya miliki.",
+
+        "Saya berusaha mempelajari keterampilan baru.",
+
+        "Saya sering merasa tidak mampu mengembangkan diri.",
+
+        "Saya memiliki target untuk meningkatkan kemampuan diri.",
+
+        "Saya berani mencoba hal-hal baru.",
+
+        "Saya mau menerima kritik untuk memperbaiki diri.",
+
+        "Saya berusaha memperbaiki kekurangan yang saya miliki.",
+
+        "Saya mengikuti kegiatan yang dapat mengembangkan potensi saya.",
+
+        "Saya memiliki motivasi untuk menjadi versi diri yang lebih baik."
+
+    ]
+
+};
+
+
+/* =========================================
+   BUKA / TUTUP PEMETAAN DIRI
+========================================= */
+
+function bukaAngket() {
+
+    const form =
+        document.getElementById("formAngket");
+
+    if (!form) return;
+
+    if (form.style.display === "block") {
+
+        form.style.display = "none";
+
+        return;
+    }
+
+    form.style.display = "block";
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
     });
 }
+
+
+/* =========================================
+   CEK BIODATA
+========================================= */
+
+function biodataLengkap() {
+
+    const nama =
+        document.getElementById("namaAngket");
+
+    const kelas =
+        document.getElementById("kelasAngket");
+
+    const kontak =
+        document.getElementById("kontakAngket");
+
+
+    if (!nama || nama.value.trim() === "") {
+
+        bukaAngket();
+
+        alert(
+            "Silakan isi Nama / Inisial terlebih dahulu."
+        );
+
+        if (nama) {
+            nama.focus();
+        }
+
+        return false;
+    }
+
+
+    if (!kelas || kelas.value.trim() === "") {
+
+        bukaAngket();
+
+        alert(
+            "Silakan isi Kelas terlebih dahulu."
+        );
+
+        if (kelas) {
+            kelas.focus();
+        }
+
+        return false;
+    }
+
+
+    if (!kontak || kontak.value.trim() === "") {
+
+        bukaAngket();
+
+        alert(
+            "Silakan isi Gmail / Nomor HP terlebih dahulu."
+        );
+
+        if (kontak) {
+            kontak.focus();
+        }
+
+        return false;
+    }
+
+
+    return true;
+}
+
+
+/* =========================================
+   MEMILIH BIDANG DARI 02
+========================================= */
+
+function bukaBidang(bidang) {
+
+    if (!biodataLengkap()) {
+        return;
+    }
+
+    pilihBidang(bidang);
+}
+
+
+function pilihBidang(bidang) {
+
+    if (!pertanyaanBidang[bidang]) {
+
+        alert(
+            "Pertanyaan untuk bidang " +
+            bidang +
+            " belum ditemukan."
+        );
+
+        return;
+    }
+
+
+    bidangTerpilih = bidang;
+
+
+    tampilkanPertanyaanBidang(bidang);
+
+
+    const tempat =
+        document.getElementById("pertanyaanBidang");
+
+
+    if (tempat) {
+
+        setTimeout(function () {
+
+            tempat.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 100);
+
+    }
+}
+
+
+/* =========================================
+   MEMBUAT 6 KOTAK TERLIHAT KLIKABLE
+========================================= */
+
+function aktifkanKotakBidang() {
+
+    const kotak =
+        document.querySelectorAll(".problem-card");
+
+    if (!kotak.length) return;
+
+
+    kotak.forEach(function (card) {
+
+        card.style.cursor = "pointer";
+
+    });
+}
+
+
+/* =========================================
+   MENAMPILKAN 10 PERTANYAAN BIDANG
+   TAMPILAN ANGKET MODERN
+========================================= */
+
+function tampilkanPertanyaanBidang(bidang) {
+
+    const tempat =
+        document.getElementById("pertanyaanBidang");
+
+    if (!tempat) return;
+
+
+    const daftar =
+        pertanyaanBidang[bidang];
+
+
+    if (!daftar) {
+
+        tempat.innerHTML = "";
+
+        return;
+    }
+
+
+    let html = `
+
+        <div class="angket-bidang">
+
+            <div class="angket-header">
+
+                <div class="angket-icon">
+                    📋
+                </div>
+
+                <h3>
+                    Pemetaan Bidang ${bidang}
+                </h3>
+
+                <p>
+                    Jawablah setiap pernyataan sesuai
+                    dengan keadaanmu saat ini.
+                </p>
+
+                <div class="skala-info">
+
+                    <span>
+                        1 = Sangat Tidak Sesuai
+                    </span>
+
+                    <span>
+                        5 = Sangat Sesuai
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="daftar-soal">
+
+    `;
+
+
+    daftar.forEach(function (pertanyaan, index) {
+
+        const nomor =
+            index + 1;
+
+
+        html += `
+
+            <div class="soal-card">
+
+                <div class="nomor-soal">
+                    ${nomor}
+                </div>
+
+
+                <div class="isi-soal">
+
+                    <p class="teks-soal">
+                        ${pertanyaan}
+                    </p>
+
+
+                    <div class="pilihan-angket">
+
+                        <label class="pilihan-item">
+
+                            <input
+                                type="radio"
+                                name="bidang_${nomor}"
+                                value="1"
+                            >
+
+                            <span class="pilihan-bulat">
+                                1
+                            </span>
+
+                            <span class="pilihan-teks">
+                                Sangat Tidak Sesuai
+                            </span>
+
+                        </label>
+
+
+                        <label class="pilihan-item">
+
+                            <input
+                                type="radio"
+                                name="bidang_${nomor}"
+                                value="2"
+                            >
+
+                            <span class="pilihan-bulat">
+                                2
+                            </span>
+
+                            <span class="pilihan-teks">
+                                Tidak Sesuai
+                            </span>
+
+                        </label>
+
+
+                        <label class="pilihan-item">
+
+                            <input
+                                type="radio"
+                                name="bidang_${nomor}"
+                                value="3"
+                            >
+
+                            <span class="pilihan-bulat">
+                                3
+                            </span>
+
+                            <span class="pilihan-teks">
+                                Cukup Sesuai
+                            </span>
+
+                        </label>
+
+
+                        <label class="pilihan-item">
+
+                            <input
+                                type="radio"
+                                name="bidang_${nomor}"
+                                value="4"
+                            >
+
+                            <span class="pilihan-bulat">
+                                4
+                            </span>
+
+                            <span class="pilihan-teks">
+                                Sesuai
+                            </span>
+
+                        </label>
+
+
+                        <label class="pilihan-item">
+
+                            <input
+                                type="radio"
+                                name="bidang_${nomor}"
+                                value="5"
+                            >
+
+                            <span class="pilihan-bulat">
+                                5
+                            </span>
+
+                            <span class="pilihan-teks">
+                                Sangat Sesuai
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    html += `
+
+            </div>
+
+
+            <button
+                type="button"
+                onclick="lihatHasilBidang()"
+                class="tombol-hasil-angket"
+            >
+
+                📊 Lihat Hasil Pemetaan
+
+            </button>
+
+
+        </div>
+
+    `;
+
+
+    tempat.innerHTML = html;
+}
+
+/* =========================================
+   HASIL PEMETAAN BIDANG
+========================================= */
+
+function lihatHasilBidang() {
+
+    if (!bidangTerpilih) {
+
+        alert(
+            "Silakan pilih salah satu bidang terlebih dahulu."
+        );
+
+        return;
+    }
+
+
+    const daftarSoal =
+        pertanyaanBidang[bidangTerpilih];
+
+
+    if (!daftarSoal) {
+
+        alert(
+            "Pertanyaan bidang tidak ditemukan."
+        );
+
+        return;
+    }
+
+
+    let total =
+        0;
+
+
+    for (
+        let index = 0;
+        index < daftarSoal.length;
+        index++
+    ) {
+
+        const nomor =
+            index + 1;
+
+const pilihan =
+    document.querySelector(
+        `input[name="bidang_${nomor}"]:checked`
+    );
+
+
+if (!pilihan) {
+
+    alert(
+        "Mohon jawab semua 10 pertanyaan terlebih dahulu."
+    );
+
+    return;
+}
+
+total += Number(pilihan.value);
+
+    }
+
+
+    const rataRata =
+        total / daftarSoal.length;
+
+
+    const persentase =
+        Math.round(
+            ((rataRata - 1) / 4) * 100
+        );
+
+
+    let kategori = "";
+    let pesan = "";
+    let rekomendasi = "";
+
+
+    if (persentase <= 30) {
+
+        kategori =
+            "Kondisi relatif baik 🌱";
+
+        pesan =
+            "Jawabanmu menunjukkan bahwa kondisi pada bidang ini relatif baik.";
+
+        rekomendasi =
+            "Pertahankan kebiasaan positif yang sudah kamu lakukan dan tetap kenali kebutuhan dirimu.";
+
+    }
+
+    else if (persentase <= 60) {
+
+        kategori =
+            "Perlu perhatian 💭";
+
+        pesan =
+            "Ada beberapa hal pada bidang ini yang mungkin membutuhkan perhatian.";
+
+        rekomendasi =
+            "Cobalah mengenali bagian yang masih menjadi kesulitan dan pertimbangkan untuk bercerita kepada orang yang kamu percaya.";
+
+    }
+
+    else if (persentase <= 80) {
+
+        kategori =
+            "Perlu perhatian lebih 💙";
+
+        pesan =
+            "Jawabanmu menunjukkan adanya beberapa hal pada bidang ini yang cukup membutuhkan perhatian.";
+
+        rekomendasi =
+            "Kamu dapat mempertimbangkan untuk bercerita kepada guru BK, konselor, atau orang yang kamu percaya.";
+
+    }
+
+    else {
+
+        kategori =
+            "Perlu dukungan lebih lanjut 🤝";
+
+        pesan =
+            "Hasil pemetaan menunjukkan bahwa bidang ini cukup membutuhkan perhatian.";
+
+        rekomendasi =
+            "Jangan menghadapi semuanya sendirian. Kamu dapat melanjutkan cerita kepada guru BK atau konselor untuk mendapatkan dukungan yang sesuai.";
+
+    }
+
+
+    const namaElement =
+        document.getElementById("namaAngket");
+
+    const kelasElement =
+        document.getElementById("kelasAngket");
+
+    const catatanElement =
+        document.getElementById("catatanAngket");
+
+
+    const nama =
+        namaElement
+            ? namaElement.value.trim()
+            : "";
+
+    const kelas =
+        kelasElement
+            ? kelasElement.value.trim()
+            : "";
+
+    const catatan =
+        catatanElement
+            ? catatanElement.value.trim()
+            : "";
+
+
+    const tempat =
+        document.getElementById("pertanyaanBidang");
+
+
+    if (!tempat) return;
+
+
+    tempat.innerHTML = `
+
+        <div class="hasil-card">
+
+            <h3>
+                📊 Hasil Pemetaan
+            </h3>
+
+
+            <p>
+                Halo,
+                <strong>${nama}</strong>
+                dari kelas
+                <strong>${kelas}</strong>.
+            </p>
+
+
+            <hr>
+
+
+            <p>
+                <strong>
+                    Bidang yang dipilih:
+                </strong>
+            </p>
+
+
+            <h2 style="
+                text-align:center;
+                color:#2f80ed;
+                margin:15px 0;
+            ">
+
+                ${bidangTerpilih}
+
+            </h2>
+
+
+            <p>
+                <strong>
+                    Tingkat perhatian kondisi:
+                </strong>
+            </p>
+
+
+            <div style="
+                width:100%;
+                height:14px;
+                background:#e8f0f7;
+                border-radius:20px;
+                overflow:hidden;
+                margin:15px 0;
+            ">
+
+                <div style="
+                    width:${persentase}%;
+                    height:100%;
+                    background:#4d94dd;
+                    border-radius:20px;
+                "></div>
+
+            </div>
+
+
+            <h2 style="
+                text-align:center;
+                color:#2f80ed;
+                margin:10px 0;
+            ">
+
+                ${persentase}%
+
+            </h2>
+
+
+            <p style="
+                text-align:center;
+            ">
+
+                <strong>
+                    ${kategori}
+                </strong>
+
+            </p>
+
+
+            <hr>
+
+
+            <p>
+                ${pesan}
+            </p>
+
+
+            <h3>
+                💡 Rekomendasi
+            </h3>
+
+
+            <p>
+                ${rekomendasi}
+            </p>
+
+
+            ${
+                catatan
+                ?
+                `
+                <hr>
+
+                <h3>
+                    💬 Cerita Tambahan
+                </h3>
+
+                <p>
+                    ${catatan}
+                </p>
+                `
+                :
+                ""
+            }
+
+
+            <p style="
+                margin-top:20px;
+                padding:12px;
+                background:#f4f8fb;
+                border-radius:10px;
+                font-size:12px;
+                color:#71879c;
+            ">
+
+                ℹ️ Hasil ini merupakan pemetaan awal
+                untuk membantu mengenali kondisi diri
+                dan bukan merupakan diagnosis psikologis.
+
+            </p>
+
+
+            <button
+                type="button"
+                onclick="tampilkanKonselor()"
+                class="assessment-button"
+                style="
+                    width:100%;
+                    margin-top:15px;
+                "
+            >
+
+                💬 Saya Ingin Melanjutkan Cerita
+
+            </button>
+
+
+            <button
+                type="button"
+                onclick="isiUlangBidang()"
+                class="assessment-button"
+                style="
+                    width:100%;
+                    margin-top:10px;
+                "
+            >
+
+                🔄 Isi Ulang Pemetaan
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    tempat.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+
+/* =========================================
+   ISI ULANG BIDANG
+========================================= */
+
+function isiUlangBidang() {
+
+    if (!bidangTerpilih) return;
+
+    tampilkanPertanyaanBidang(
+        bidangTerpilih
+    );
+
+
+    const tempat =
+        document.getElementById("pertanyaanBidang");
+
+
+    if (tempat) {
+
+        tempat.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+}
+
+
+/* =========================================
+   KIRIM ANGKET LAMA
+   DIPERTAHANKAN AGAR TOMBOL HTML
+   TIDAK ERROR
+========================================= */
+
+function kirimAngket() {
+
+    if (!biodataLengkap()) {
+        return;
+    }
+
+
+    if (!bidangTerpilih) {
+
+        alert(
+            "Silakan pilih salah satu bidang di bagian 02 — Temukan Arah."
+        );
+
+        return;
+    }
+
+
+    lihatHasilBidang();
+}
+
+
+/* =========================================
+   PINDAHKAN PEMETAAN DIRI
+   KE ATAS 02 — TEMUKAN ARAH
+========================================= */
+
+function pindahkanPemetaan() {
+
+    const problemSection =
+        document.getElementById("temukan-arah");
+
+    const assessmentSection =
+        document.querySelector(".assessment-section");
+
+    const formAngket =
+        document.getElementById("formAngket");
+
+
+    if (!problemSection) return;
+
+
+    /*
+       Pemetaan Diri dipindahkan
+       tepat sebelum 02.
+    */
+
+    if (assessmentSection) {
+
+        problemSection.parentNode.insertBefore(
+            assessmentSection,
+            problemSection
+        );
+
+    }
+
+
+    /*
+       Form biodata dipindahkan
+       tepat setelah Pemetaan Diri.
+    */
+
+    if (formAngket) {
+
+        problemSection.parentNode.insertBefore(
+            formAngket,
+            problemSection
+        );
+
+    }
+
+
+    /*
+       Form awalnya disembunyikan.
+       Dibuka ketika tombol
+       "Mulai Pemetaan Diri" ditekan.
+    */
+
+    if (formAngket) {
+
+        formAngket.style.display = "none";
+
+    }
+
+
+    /*
+       Sembunyikan pertanyaan lama
+       yang sudah digantikan oleh
+       6 bidang di bagian 02.
+    */
+
+    const kondisi =
+        document.getElementById("kondisiAngket");
+
+    const perasaan =
+        document.getElementById("perasaanAngket");
+
+    const skala =
+        document.getElementById("skalaAngket");
+
+
+    if (kondisi) {
+
+        const group =
+            kondisi.closest(".form-group");
+
+        if (group) {
+            group.style.display = "none";
+        }
+
+    }
+
+
+    if (perasaan) {
+
+        const group =
+            perasaan.closest(".form-group");
+
+        if (group) {
+            group.style.display = "none";
+        }
+
+    }
+
+
+    if (skala) {
+
+        const group =
+            skala.closest(".form-group");
+
+        if (group) {
+            group.style.display = "none";
+        }
+
+    }
+
+
+    /*
+       Placeholder pertanyaan lama
+       tidak digunakan lagi.
+    */
+
+    const pertanyaanLama =
+        document.getElementById(
+            "pertanyaanBidangAngket"
+        );
+
+
+    if (pertanyaanLama) {
+
+        pertanyaanLama.innerHTML = "";
+
+        pertanyaanLama.style.display = "none";
+
+    }
+
+}
+
+
+/* =========================================
+   DAFTAR KONSELOR
+========================================= */
+/* =========================================
+   DAFTAR KONSELOR
+========================================= */
+
+function tampilkanKonselor() {
+
+    const hasil =
+        document.getElementById("hasil");
+
+
+    if (!hasil) return;
+
+
+    const daftarLama =
+        document.getElementById("daftarKonselor");
+
+
+    if (daftarLama) {
+
+        daftarLama.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+        return;
+    }
+
+
+    hasil.innerHTML += `
+
+        <div
+            id="daftarKonselor"
+            class="hasil-card"
+            style="
+                margin-top:20px;
+                border-top:2px solid #e8f0f7;
+            "
+        >
+
+            <h3>
+                👩‍💼 Konselor yang Dapat Dihubungi
+            </h3>
+
+
+            <p>
+                Jika kamu ingin bercerita lebih lanjut,
+                kamu dapat menghubungi salah satu konselor
+                berikut melalui WhatsApp.
+            </p>
+
+
+            <div style="
+                display:flex;
+                flex-direction:column;
+                gap:12px;
+            ">
+
+
+                <!-- LILIS MARLINA -->
+
+                <div style="
+                    padding:15px;
+                    background:#f4f8fb;
+                    border-radius:12px;
+                ">
+
+                    <strong>
+                        Lilis Marlina
+                    </strong>
+
+                    <br><br>
+
+                    <a
+                        href="https://wa.me/6289679210852"
+                        target="_blank"
+                        rel="noopener"
+                        style="
+                            display:inline-block;
+                            padding:9px 15px;
+                            background:#25D366;
+                            color:white;
+                            text-decoration:none;
+                            border-radius:8px;
+                        "
+                    >
+
+                        💬 Hubungi via WhatsApp
+
+                    </a>
+
+                </div>
+
+
+                <!-- SAFNA NAFISAH -->
+
+                <div style="
+                    padding:15px;
+                    background:#f4f8fb;
+                    border-radius:12px;
+                ">
+
+                    <strong>
+                        Safna Nafisah
+                    </strong>
+
+                    <br><br>
+
+                    <a
+                        href="https://wa.me/62882015421074"
+                        target="_blank"
+                        rel="noopener"
+                        style="
+                            display:inline-block;
+                            padding:9px 15px;
+                            background:#25D366;
+                            color:white;
+                            text-decoration:none;
+                            border-radius:8px;
+                        "
+                    >
+
+                        💬 Hubungi via WhatsApp
+
+                    </a>
+
+                </div>
+
+
+                <!-- SITI FATIMAH -->
+
+                <div style="
+                    padding:15px;
+                    background:#f4f8fb;
+                    border-radius:12px;
+                ">
+
+                    <strong>
+                        Siti Fatimah
+                    </strong>
+
+                    <br><br>
+
+                    <a
+                        href="https://wa.me/6285922978976"
+                        target="_blank"
+                        rel="noopener"
+                        style="
+                            display:inline-block;
+                            padding:9px 15px;
+                            background:#25D366;
+                            color:white;
+                            text-decoration:none;
+                            border-radius:8px;
+                        "
+                    >
+
+                        💬 Hubungi via WhatsApp
+
+                    </a>
+
+                </div>
+
+
+                <!-- PUTRI KESUMA -->
+
+                <div style="
+                    padding:15px;
+                    background:#f4f8fb;
+                    border-radius:12px;
+                ">
+
+                    <strong>
+                        Putri Kesuma
+                    </strong>
+
+                    <br><br>
+
+                    <a
+                        href="https://wa.me/62882015468442"
+                        target="_blank"
+                        rel="noopener"
+                        style="
+                            display:inline-block;
+                            padding:9px 15px;
+                            background:#25D366;
+                            color:white;
+                            text-decoration:none;
+                            border-radius:8px;
+                        "
+                    >
+
+                        💬 Hubungi via WhatsApp
+
+                    </a>
+
+                </div>
+
+
+                <!-- NABILA RASYA -->
+
+                <div style="
+                    padding:15px;
+                    background:#f4f8fb;
+                    border-radius:12px;
+                ">
+
+                    <strong>
+                        Nabila Rasya
+                    </strong>
+
+                    <br><br>
+
+                    <a
+                        href="https://wa.me/6283149474226"
+                        target="_blank"
+                        rel="noopener"
+                        style="
+                            display:inline-block;
+                            padding:9px 15px;
+                            background:#25D366;
+                            color:white;
+                            text-decoration:none;
+                            border-radius:8px;
+                        "
+                    >
+
+                        💬 Hubungi via WhatsApp
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+            <p style="
+                margin-top:18px;
+                padding:12px;
+                background:#fff;
+                border-radius:10px;
+                font-size:12px;
+                color:#71879c;
+            ">
+
+                🔒 Silakan hubungi konselor jika kamu
+                ingin melanjutkan cerita atau membutuhkan
+                bantuan konseling.
+
+            </p>
+
+        </div>
+
+    `;
+
+
+    const daftar =
+        document.getElementById(
+            "daftarKonselor"
+        );
+
+
+    if (daftar) {
+
+        daftar.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+}
+
+/* =========================================
+   SAAT HTML SELESAI DIMUAT
+========================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        /*
+           Pindahkan Pemetaan Diri
+           dan Biodata ke atas 02.
+        */
+
+        pindahkanPemetaan();
+
+
+        /*
+           Aktifkan tampilan 6 kotak.
+        */
+
+        aktifkanKotakBidang();
+
+
+        /*
+           Pastikan hasil pertanyaan
+           masih kosong saat halaman dibuka.
+        */
+
+        const tempat =
+            document.getElementById(
+                "pertanyaanBidang"
+            );
+
+
+        if (tempat) {
+            tempat.innerHTML = "";
+        }
+
+    }
+);
