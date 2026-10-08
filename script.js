@@ -1,3 +1,40 @@
+const URL_GOOGLE_SHEETS =
+    "https://script.google.com/macros/s/AKfycbyzeEeV1tf1WZWCgBbeO0O0xPguKneM8FvgBJUHJ6yWmrROlVF5veGBnIAYaPDFk3jq/exec";
+
+
+function simpanKeGoogleSheets(data) {
+
+    fetch(URL_GOOGLE_SHEETS, {
+
+        method: "POST",
+
+        mode: "no-cors",
+
+        headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+        },
+
+        body: JSON.stringify(data)
+
+    })
+    .then(() => {
+
+        console.log(
+            "Data berhasil dikirim ke Google Sheets."
+        );
+
+    })
+    .catch((error) => {
+
+        console.error(
+            "Gagal mengirim data:",
+            error
+        );
+
+    });
+
+}
+
 /* =========================================
    SAHABAT KONSELING
    SCRIPT UTAMA
@@ -1156,6 +1193,63 @@ total += Number(pilihan.value);
 
     if (!tempat) return;
 
+const kontakElement =
+        document.getElementById("kontakAngket");
+
+    const kontak =
+        kontakElement
+            ? kontakElement.value.trim()
+            : "";
+
+
+    // SIMPAN DATA KE GOOGLE SHEETS
+    simpanKeGoogleSheets({
+
+        nama: nama,
+
+        kelas: kelas,
+
+        kontak: kontak,
+
+        bidang: bidangTerpilih,
+
+        jawaban1:
+            document.querySelector(`input[name="bidang_1"]:checked`)?.value || "",
+
+        jawaban2:
+            document.querySelector(`input[name="bidang_2"]:checked`)?.value || "",
+
+        jawaban3:
+            document.querySelector(`input[name="bidang_3"]:checked`)?.value || "",
+
+        jawaban4:
+            document.querySelector(`input[name="bidang_4"]:checked`)?.value || "",
+
+        jawaban5:
+            document.querySelector(`input[name="bidang_5"]:checked`)?.value || "",
+
+        jawaban6:
+            document.querySelector(`input[name="bidang_6"]:checked`)?.value || "",
+
+        jawaban7:
+            document.querySelector(`input[name="bidang_7"]:checked`)?.value || "",
+
+        jawaban8:
+            document.querySelector(`input[name="bidang_8"]:checked`)?.value || "",
+
+        jawaban9:
+            document.querySelector(`input[name="bidang_9"]:checked`)?.value || "",
+
+        jawaban10:
+            document.querySelector(`input[name="bidang_10"]:checked`)?.value || "",
+
+        persentase: persentase,
+
+        kategori: kategori,
+
+        catatan: catatan
+
+    });
 
     tempat.innerHTML = `
 
